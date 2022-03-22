@@ -29,7 +29,7 @@ const ProductsPage = () => {
         </div>
         <div className="product-layout mt-1">
           {products.map((product) => (
-            <ProductCard product={product} />
+            <ProductCard key={product._id}  product={product} />
           ))}
         </div>
       </div>

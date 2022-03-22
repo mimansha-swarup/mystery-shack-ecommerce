@@ -14,11 +14,11 @@ const Filter = () => {
     <p className="hedline6  bold ">Sort By</p>
     <div className="flex ">
       <input type="radio" name="price" id="low-high" />
-      <label for="low-high">Price: Low to High </label>
+      <label htmlFor="low-high">Price: Low to High </label>
     </div>
     <div className="flex ">
       <input type="radio" name="price" id="high-low" />
-      <label for="high-low">Price: High to Low </label>
+      <label htmlFor="high-low">Price: High to Low </label>
     </div>
     <hr className="line-horz" />
     <p className="hedline6  bold ">Price</p>
@@ -28,50 +28,50 @@ const Filter = () => {
     <p className="hedline6  bold ">Category</p>
     <div className="flex ">
       <input type="checkbox" name="tshirts" id="tshirts" />
-      <label for="tshirts">T-Shirts </label>
+      <label htmlFor="tshirts">T-Shirts </label>
     </div>
 
     <div className="flex ">
       <input type="checkbox" name="jeans" id="jeans" />
-      <label for="jeans">Jeans </label>
+      <label htmlFor="jeans">Jeans </label>
     </div>
     <div className="flex ">
       <input type="checkbox" name="kurtas" id="kurtas" />
-      <label for="kurtas">Kurtas </label>
+      <label htmlFor="kurtas">Kurtas </label>
     </div>
     <div className="flex ">
       <input type="checkbox" name="shoes" id="shoes" />
-      <label for="shoes">Shoes </label>
+      <label htmlFor="shoes">Shoes </label>
     </div>
     <div className="flex ">
       <input type="checkbox" name="sarees" id="sarees" />
-      <label for="sarees">Sarees </label>
+      <label htmlFor="sarees">Sarees </label>
     </div>
     <div className="flex ">
       <input type="checkbox" name="trousers" id="trousers" />
-      <label for="trousers">Trousers </label>
+      <label htmlFor="trousers">Trousers </label>
     </div>
     <hr className="line-horz" />
     <p className="hedline6  bold ">Ratings</p>
     <div className="flex ">
       <input type="radio" name="star" id="5star" />
-      <label for="5star">5 stars and above </label>
+      <label htmlFor="5star">5 stars and above </label>
     </div>
     <div className="flex ">
       <input type="radio" name="star" id="4star" />
-      <label for="4star">4 stars and above </label>
+      <label htmlFor="4star">4 stars and above </label>
     </div>
     <div className="flex ">
       <input type="radio" name="star" id="3star" />
-      <label for="3star">3 stars and above </label>
+      <label htmlFor="3star">3 stars and above </label>
     </div>
     <div className="flex ">
       <input type="radio" name="star" id="2star" />
-      <label for="2star">2 stars and above </label>
+      <label htmlFor="2star">2 stars and above </label>
     </div>
     <div className="flex ">
       <input type="radio" name="star" id="1star" />
-      <label for="1star">1 stars and above </label>
+      <label htmlFor="1star">1 stars and above </label>
     </div>
     <hr className="line-horz" />
     
