@@ -1,0 +1,25 @@
+.hero{
+  position: relative;
+}
+.hero img{
+  min-height: 12rem;
+}
+.hero-navigate{
+  position: absolute;
+  font-size: 2rem;
+  color: var(--color-black-00);
+  background-color: var(--Elevation-01);
+  border-radius: 100%;
+  cursor: pointer;
+
+}
+.hero-navigate:nth-child(2){
+  right:5%;
+}
+.hero-navigate:nth-child(1){
+  left:5%
+}
+.absolute-middle{
+  top: 50%;
+  transform: translate(0,-50%);
+}
