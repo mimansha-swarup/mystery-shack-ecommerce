@@ -4,8 +4,13 @@ import "./Navbar.css";
 import { BsHeart, BsBag, BsSearch } from "react-icons/bs";
 import { AiOutlineMenu } from "react-icons/ai";
 import { useState } from "react";
+import { useFilters } from "../../Context";
+import { filterActions } from "../../Reducer/contant";
 const Navbar = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const { filterState, filterDispatch } = useFilters();
+  const { searchQuery } = filterState;
+
   const toggleDrawer = () =>
     setIsDrawerOpen((prevIsDrawerOpen) => (isDrawerOpen ? false : true));
   return (
@@ -32,7 +37,19 @@ const Navbar = () => {
       </div>
 
       <div className="search-box mr-3">
-        <input type="text" name="search-box" id="search" placeholder="search" />
+        <input
+          type="text"
+          name="search-box"
+          id="search"
+          placeholder="search"
+          value={searchQuery}
+          onChange={(event) =>
+            filterDispatch({
+              type: filterActions.SET_SEARCH_QUERY,
+              payload: event.target.value,
+            })
+          }
+        />
         <BsSearch className="nav-icons" />
       </div>
       <nav className="flex ">
