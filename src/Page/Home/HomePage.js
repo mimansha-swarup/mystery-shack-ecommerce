@@ -1,9 +1,9 @@
-import { Link } from "react-router-dom";
+
 import { categories } from "../../backend/db/categories";
 import { topBrands } from "../../backend/db/topBrand";
-import { CategoryCard, Footer, Hero,BrandCard } from "../../Component";
-import "./HomePage.css";
+import { CategoryCard, Footer, Hero, BrandCard } from "../../Component";
 
+import "./HomePage.css";
 
 const HomePage = () => {
   return (
@@ -13,9 +13,10 @@ const HomePage = () => {
         <h2 className="headline2">Category</h2>
         <div className="category-layout mb-3">
           {categories.map((category) => (
-            <Link key={category._id} to="/products" >
-            <CategoryCard  category={category} />
-            </Link>
+            <CategoryCard
+              key={category._id}
+              category={category}
+            />
           ))}
         </div>
         <h2 className="headline2">Top Brands</h2>

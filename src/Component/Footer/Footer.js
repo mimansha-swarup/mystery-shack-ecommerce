@@ -3,18 +3,18 @@ import { AiFillGithub ,AiFillLinkedin,AiOutlineInstagram,AiOutlineTwitter } from
 import "./Footer.css"
 const Footer = () => {
   return (
-    <footer class="footer gap-1">
-      <div class="footer-brand flex flex-column center">
+    <footer className="footer gap-1">
+      <div className="footer-brand flex flex-column center">
         <a href="/">
           <img
-            class="brand-logo"
+            className="brand-logo"
             src={NavBrandImg}
             alt="MysteryShack"
           />
         </a>
         
           <h2 className="headline2" >Mystery Shacks</h2>
-          <div class="footer-icons ">
+          <div className="footer-icons ">
             <AiFillGithub/>
             <AiFillLinkedin/>
             <AiOutlineTwitter/>
@@ -26,9 +26,9 @@ const Footer = () => {
       <div className="footer-actions-container">
 
       
-      <div class="footer-actions">
+      <div className="footer-actions">
        
-          <h6 class="headline6">About</h6>
+          <h6 className="headline6">About</h6>
           <ul>
             <li>
               <a href="/">About Us</a>
@@ -44,9 +44,9 @@ const Footer = () => {
             </li>
           </ul>
         </div>
-      <div class="footer-actions">
+      <div className="footer-actions">
        
-          <h6 class="headline6">Pages</h6>
+          <h6 className="headline6">Pages</h6>
           <ul>
             <li>
               <a href="/">Home</a>
@@ -62,9 +62,9 @@ const Footer = () => {
             </li>
           </ul>
         </div>
-      <div class="footer-actions">
+      <div className="footer-actions">
        
-          <h6 class="headline6">Help</h6>
+          <h6 className="headline6">Help</h6>
           <ul>
             <li>
               <a href="/">Payments</a>
@@ -80,8 +80,8 @@ const Footer = () => {
             </li>
           </ul>
         </div>
-        <div class="footer-actions ">
-          <h6 class="headline6">Information</h6>
+        <div className="footer-actions ">
+          <h6 className="headline6">Information</h6>
           <ul>
             <li>
               <a href="/">FAQ</a>

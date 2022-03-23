@@ -3,13 +3,21 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import { makeServer } from "./server";
+import { FilterProvider, ProductsProvider } from "./Context";
+import { BrowserRouter } from "react-router-dom";
 
 // Call make Server
 makeServer();
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <FilterProvider>
+        <ProductsProvider>
+          <App />
+        </ProductsProvider>
+      </FilterProvider>
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById("root")
 );
