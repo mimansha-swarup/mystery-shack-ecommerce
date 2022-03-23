@@ -41,7 +41,7 @@ export const filterReducer = (state, action) => {
         return {
           ...state,
           category: state.category.filter(
-            (eachCategory) => (eachCategory !== action.payload)
+            (eachCategory) => eachCategory !== action.payload
           ),
         };
       } else {
@@ -51,8 +51,6 @@ export const filterReducer = (state, action) => {
         };
       }
     case CLEAR:
-      console.log("clear is working") 
-      
       return {
         sortBy: null,
         showInventoryAll: true,
@@ -62,9 +60,8 @@ export const filterReducer = (state, action) => {
         searchQuery: "",
         category: [],
       };
-      
-      default:
-      console.log("clear deafaukt is working") 
+
+    default:
       break;
   }
 };
