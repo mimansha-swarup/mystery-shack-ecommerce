@@ -2,7 +2,7 @@
 // import { categories } from "../../backend/db/categories";
 import { topBrands } from "../../backend/db/topBrand";
 import { CategoryCard, Footer, Hero, BrandCard } from "../../Component";
-import { useCategories } from "../../Context/categoriesContext";
+import { useCategories } from "../../Context";
 
 import "./HomePage.css";
 
