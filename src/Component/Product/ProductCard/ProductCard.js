@@ -31,12 +31,12 @@ const ProductCard = ({ product }) => {
           <p className="card-title subtitle1 semi-bold">{company}</p>
           <p className="card-subtitle subtitle2">{productName}</p>
         </div>
-        <span className="mr-1">Rs. {price}</span>
+        <span className="mr-1">₹{price}</span>
         <span
           className="text-black-01 mr-1"
           style={{ textDecoration: "line-through" }}
         >
-          {DiscountedPrice(price, discount)}
+          ₹{DiscountedPrice(price, discount)}
         </span>
         <span className="text-red-00 small-text">({discount}%Off)</span>
       </div>

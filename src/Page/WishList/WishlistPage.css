@@ -1,0 +1,55 @@
+.wishlist-container {
+  width: 80%;
+  margin: 0 auto;
+  padding: 3rem 0;
+}
+.grid-x4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 2.5rem;
+  grid-row-gap: 2rem;
+}
+.grid-x4 .card .card-title {
+  width: 10rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  ;
+}
+
+.wishlist-container .card-dismiss{
+  color: var(--color-black-02);
+}
+
+@media (max-width: 1117px) {
+  .grid-x4 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .grid-x4 .card .card-title {
+    width: 12rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .grid-x4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .grid-x4 .card .card-title {
+    width: 14rem;
+  }
+}
+@media (max-width: 431px) {
+  .wishlist-container{
+    width: 90%;
+  }
+  .grid-x4 {
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: .75rem;
+  }
+  .grid-x4 .card{
+    transform: scale(.95);
+  }
+  .grid-x4 .card .card-title {
+    width: 20rem;
+  }
+}
