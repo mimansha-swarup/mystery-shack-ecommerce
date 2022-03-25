@@ -16,7 +16,6 @@ export const CategoriesProvider = ({ children }) => {
       setStatus({ isLoading: true, error: "" });
       const response = await axios.get(categoriesApi);
       if (response.status === 200) {
-        // console.log(response.data)
         setCategoriesData(response.data.categories);
         setStatus({ isLoading: false, error: "" });
       }
