@@ -38,7 +38,10 @@ const ProductsPage = () => {
       </div>
       <div className="product-Container">
         <div className="flex space-between">
-          Products
+          <p className="subtitle1">
+
+          Results <span className="grey-text overline">({filteredList.length} items)</span>
+          </p>
           <button className="btn filter-btn" onClick={handleFilterOpen}>
             Filters { isFilterOpen ? <AiOutlineClose className="vertical-aligin-middle" />  : <AiOutlineMenuFold className="vertical-aligin-middle" />}
           </button>

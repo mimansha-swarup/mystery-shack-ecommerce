@@ -17,3 +17,7 @@
 a:-webkit-any-link {
   text-decoration:none;
 }
+
+.react-icons{
+  vertical-align: middle;
+}
