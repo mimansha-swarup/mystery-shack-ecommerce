@@ -1,3 +1,4 @@
+import { useContext } from "react";
 import "./App.css";
 import { Navbar } from "./Component/index";
 import AllRoutes from "./Routes/AllRouters";

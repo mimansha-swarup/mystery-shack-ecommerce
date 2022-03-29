@@ -7,9 +7,11 @@ const categoriesContext = createContext([]);
 
 export const useCategories = () => useContext(categoriesContext);
 
+
+
 export const CategoriesProvider = ({ children }) => {
   const [categoriesData, setCategoriesData] = useState([]);
-  const [status, setStatus] = useState({ isLoading: false, wrror: "" });
+  const [status, setStatus] = useState({ isLoading: false, error: "" });
 
   useEffect(() => {
     (async () => {

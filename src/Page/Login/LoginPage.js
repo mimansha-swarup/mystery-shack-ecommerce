@@ -2,27 +2,32 @@ import "./LoginPage.css";
 import { BiLogIn, BiShow, BiHide } from "react-icons/bi";
 import { IoIosArrowDropright } from "react-icons/io";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import {  useState } from "react";
+import { useAuth } from "../../Context";
 const LoginPage = () => {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
-  const [credential, setCredential] = useState({});
-  const handleTogglePasswordVisbility = () => setIsPasswordVisible((prevIsPasswordVisible) => !prevIsPasswordVisible);
-  const handleLoginFormSubmit = (event) =>{
+
+  const handleTogglePasswordVisbility = () =>
+    setIsPasswordVisible((prevIsPasswordVisible) => !prevIsPasswordVisible);
+
+  const { Login } = useAuth();
+
+  const handleLoginFormSubmit = (event) => {
     event.preventDefault();
-    console.log("event")
-    const emailDetails =  event.target.email
-    const passwordDetails =  event.target.password
-    setCredential({email:emailDetails,password:passwordDetails})
-    
-    // TODO: - Authentiaction Part
-  }
+
+    const emailDetails = event.target.email.value;
+    const passwordDetails = event.target.password.value;
+    console.log(emailDetails, passwordDetails);
+    Login(emailDetails, passwordDetails);
+  };
   return (
     <main className="authentication-body flex center">
       <div className="card authentication-container ">
         <h3 className="headline3 bold text-center">
           Login <BiLogIn className="react-icons " />
         </h3>
-        <form className="form-group" onSubmit={handleLoginFormSubmit} >
+
+        <form className="form-group" onSubmit={handleLoginFormSubmit}>
           <div className="input-group">
             <input
               type="email"
@@ -41,8 +46,7 @@ const LoginPage = () => {
               id="password"
               placeholder="Password"
               required
-              title="must contains one digit, Lower-case and Upper-case characters, one special character, minimum  length of 8 characters"
-              pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W]).{8,20}"
+            
             />
             {isPasswordVisible ? (
               <BiHide
@@ -69,6 +73,7 @@ const LoginPage = () => {
           <button type="submit" className="btn btn-contained purple">
             LOG IN
           </button>
+
           <Link to="/signup" className="subtitle1 text-center">
             Create New Account <IoIosArrowDropright className="react-icons " />
           </Link>
