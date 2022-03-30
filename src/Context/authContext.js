@@ -6,8 +6,8 @@ import { authActions } from "../Reducer/contant";
 import { useNavigate } from "react-router-dom";
 
 const initialState = {
-  token: JSON.parse(localStorage.getItem("jwtToken"))?.token || "",
-  isAuth: JSON.parse(localStorage.getItem("jwtToken"))?.isAuth || false,
+  token: JSON.parse(localStorage.getItem("jwtAuth"))?.token || "",
+  isAuth: JSON.parse(localStorage.getItem("jwtAuth"))?.isAuth || false,
 };
 
 const authContext = createContext("test");
@@ -16,13 +16,13 @@ export const useAuth = () => useContext(authContext);
 
 export const AuthProvider = ({ children }) => {
   const [authState, authDispatch] = useReducer(authReducer, initialState);
-  console.log("authState", authState);
+
   const navigate = useNavigate();
 
   const Login = async (email, password) => {
     try {
       const response = await axios.post(loginPostApi, { email, password });
-      console.log(response);
+
       if (response.status === 200) {
         const { encodedToken } = response.data;
 
