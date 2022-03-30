@@ -7,3 +7,7 @@ export const filterActions = {
   SET_SEARCH_QUERY: "SER_SEARCH_QUERY",
    CLEAR: "CLEAR",
 };
+export const authActions = {
+  LOGIN: "LOGIN",
+  LOGOUT: "LOGOUT",
+};

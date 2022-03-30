@@ -4,12 +4,13 @@ import "./Navbar.css";
 import { BsHeart, BsBag, BsSearch } from "react-icons/bs";
 import { AiOutlineMenu } from "react-icons/ai";
 import { useState } from "react";
-import { useFilters } from "../../Context";
-import { filterActions } from "../../Reducer/contant";
+import { useAuth, useFilters } from "../../Context";
+import { filterActions, authActions } from "../../Reducer/contant";
 const Navbar = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const { filterState, filterDispatch } = useFilters();
   const { searchQuery } = filterState;
+  const { authState, authDispatch } = useAuth();
 
   const toggleDrawer = () =>
     setIsDrawerOpen((prevIsDrawerOpen) => (isDrawerOpen ? false : true));
@@ -72,10 +73,17 @@ const Navbar = () => {
             <span className=" small-text">Cart</span>
           </div>
         </Link>
-
-        <Link to="/login">
-          <button className="btn btn-outline purple ml-2">Login</button>
-        </Link>
+        {authState?.isAuth ? (
+          <button onClick={()=>authDispatch({type:authActions.LOGOUT})}  className="btn btn-outline purple ml-2 semibold">
+            Logout
+          </button>
+        ) : (
+          <Link to="/login">
+            <button className="btn btn-outline purple ml-2 semibold">
+              Login
+            </button>
+          </Link>
+        )}
       </nav>
     </header>
   );

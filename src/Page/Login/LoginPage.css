@@ -14,15 +14,18 @@
 .authentication-container.card a {
   color: var(--color-ash-gray);
 }
-.authentication-container.card .input-group{
+.authentication-container.card .input-group {
   position: relative;
 }
 .authentication-container.card .password-icon {
   position: absolute;
   font-size: 1.3rem;
   right: 1rem;
-  top:50%;
-  transform: translate(0,-50%);
+  top: 50%;
+  transform: translate(0, -50%);
   cursor: pointer;
   color: var(--color-black-01);
+}
+.authentication-container.card .flex .input-group {
+  width: 47%;
 }
