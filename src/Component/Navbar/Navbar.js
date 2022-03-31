@@ -4,7 +4,7 @@ import "./Navbar.css";
 import { BsHeart, BsBag, BsSearch } from "react-icons/bs";
 import { AiOutlineMenu } from "react-icons/ai";
 import { useState } from "react";
-import { useAuth, useFilters, useWishList } from "../../Context";
+import { useAuth, useCart, useFilters, useWishList } from "../../Context";
 import { filterActions, authActions } from "../../Reducer/contant";
 const Navbar = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -12,7 +12,7 @@ const Navbar = () => {
   const { searchQuery } = filterState;
   const { authState, authDispatch } = useAuth();
   const { wishListState } = useWishList();
-
+  const { cartState } = useCart();
 
   const toggleDrawer = () =>
     setIsDrawerOpen((prevIsDrawerOpen) => (isDrawerOpen ? false : true));
@@ -69,10 +69,11 @@ const Navbar = () => {
           <div className=" mr-1 grey-color flex flex-column center">
             <div className="badge-wrapper">
               <BsHeart className="nav-icons" />
-              {
-                wishListState.data.length>0 &&
-              <div className="badge top-right red">{wishListState.data.length}</div>
-              }
+              {wishListState.data.length > 0 && (
+                <div className="badge top-right red">
+                  {wishListState.data.length}
+                </div>
+              )}
             </div>
             <span className=" small-text">Wishlist</span>
           </div>
@@ -82,7 +83,11 @@ const Navbar = () => {
           <div className="grey-color flex flex-column center">
             <div className=" grey-color badge-wrapper">
               <BsBag className="nav-icons" />
-              <div className="badge top-right red">0</div>
+              {cartState.data.length > 0 && (
+                <div className="badge top-right red">
+                  {cartState.data.length}
+                </div>
+              )}
             </div>
             <span className=" small-text">Cart</span>
           </div>
