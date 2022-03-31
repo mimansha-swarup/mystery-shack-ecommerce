@@ -15,3 +15,9 @@ export const wishListActions = {
   ADD: "ADD_TO_WISHLIST",
   REMOVE: "REMOVE_FROM_WISHLIST",
 };
+export const cartActions = {
+  ADD: "ADD_TO_CART",
+  REMOVE: "REMOVE_FROM_CART",
+  INCREMENT: "INCREASE_QUANTITY",
+  DECREMENT: "DECREASE_QUANTITY",
+};
