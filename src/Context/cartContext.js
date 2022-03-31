@@ -1,14 +1,31 @@
-import { createContext, useContext, useReducer } from "react";
+import { createContext, useContext, useEffect, useReducer, useState } from "react";
 import axios from "axios";
 import { cartApi } from "../Helper/Api/api";
 import { cartReducer } from "../Reducer/cartReducer";
 import { cartActions } from "../Reducer/contant";
+import { useAuth } from "./authContext";
 const cartContext = createContext();
 
 export const useCart = () => useContext(cartContext);
 
 export const CartProvider = ({ children }) => {
-  const [cartState, cartDispatch] = useReducer(cartReducer, { data: [] });
+  const  [cartList,setCartList] = useState([])
+  const {authState} = useAuth()
+  useEffect(() => {
+    (async () => {
+      try {
+        const response = await axios.get(cartApi, {
+          headers: { authorization: authState.token },
+        });
+  
+        if (response.status === 200) setCartList(response.data.cart);
+      } catch (error) {
+        console.log("error in fetcing useState",error.message)
+      }
+    })();
+  }, []);
+
+  const [cartState, cartDispatch] = useReducer(cartReducer, { data: cartList });
 
   const postCartToServer = async (token, product, cartDispatch) => {
     try {
