@@ -11,3 +11,7 @@ export const authActions = {
   LOGIN: "LOGIN",
   LOGOUT: "LOGOUT",
 };
+export const wishListActions = {
+  ADD: "ADD_TO_WISHLIST",
+  REMOVE: "REMOVE_FROM_WISHLIST",
+};
