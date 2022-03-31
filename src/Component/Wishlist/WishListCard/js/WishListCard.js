@@ -1,16 +1,25 @@
 import { MdCancel } from "react-icons/md";
 import { AiFillStar } from "react-icons/ai";
 import { DiscountedPrice } from "../../../../Helper/DIscountedPrice";
-import { useAuth, useWishList } from "../../../../Context";
+import { useAuth, useCart, useWishList } from "../../../../Context";
 const WishListCard = ({ product }) => {
   const { productName, image, rating, price, discount } = product;
-  const { wishListDispatch, RemoveFromWishList } = useWishList();
+  const { wishListState, wishListDispatch, RemoveFromWishList } = useWishList();
+
   const { authState } = useAuth();
+  const { cartState, postCartToServer, cartDispatch, alterProductQuantity } =
+    useCart();
 
   const localRemoveFromWishlist = (token, product, wishListDispatch) =>
     RemoveFromWishList(token, product, wishListDispatch);
-  const handleMoveToBag = (token ,product,wishListDispatch) => {
-    localRemoveFromWishlist(token ,product,wishListDispatch);
+
+  const handleMoveToBag = (token, product, wishListDispatch, cartDispatch) => {
+    
+    if (cartState.data.filter((prod) => prod._id === product._id).length > 0)
+      alterProductQuantity(token, "increment", product, cartDispatch);
+    else postCartToServer(token, product, cartDispatch);
+
+    localRemoveFromWishlist(token, product, wishListDispatch);
   };
 
   return (
@@ -47,7 +56,14 @@ const WishListCard = ({ product }) => {
       </div>
       <div className="card-action ">
         <button
-          onClick={()=>handleMoveToBag(authState.token, product, wishListDispatch)}
+          onClick={() =>
+            handleMoveToBag(
+              authState.token,
+              product,
+              wishListDispatch,
+              cartDispatch
+            )
+          }
           className="btn btn-outline bold purple"
         >
           MOVE TO BAG

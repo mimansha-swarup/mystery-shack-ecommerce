@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { AiFillHeart, AiOutlineHeart, AiFillStar } from "react-icons/ai";
-import { useAuth, useWishList } from "../../../Context";
+import { useAuth, useCart, useWishList } from "../../../Context";
 import { DiscountedPrice } from "../../../Helper/DIscountedPrice";
 
 const ProductCard = ({ product }) => {
@@ -13,17 +13,33 @@ const ProductCard = ({ product }) => {
     RemoveFromWishList,
   } = useWishList();
 
-  const [isLiked, setIsLiked] = useState(wishListState.data.includes(product));
   const { authState } = useAuth();
+  const { cartState, cartDispatch, postCartToServer, deleteProductFromServer } =
+    useCart();
+
+  const isPresent = (list, product) =>
+    list.filter((prod) => prod._id === product._id).length > 0;
+
+  const [isLiked, setIsLiked] = useState(
+    isPresent(wishListState.data, product)
+  );
+  const [isAddToCart, setIsAddToCart] = useState(
+    isPresent(cartState.data, product)
+  );
 
   const handleAddToWishlist = (token, product, wishListDispatch) => {
-    if (isLiked) {
-     
-      RemoveFromWishList(token, product, wishListDispatch);
-    } else {
-      SaveToWishList(token, product, wishListDispatch);
-    }
+
+    if (isLiked) RemoveFromWishList(token, product, wishListDispatch);
+    else SaveToWishList(token, product, wishListDispatch);
+
     setIsLiked((prevIsLiked) => (prevIsLiked ? false : true));
+  };
+  const handleAddToCart = (token, product, cartDispatch) => {
+
+    if (isAddToCart) deleteProductFromServer(token, product, cartDispatch);
+    else postCartToServer(token, product, cartDispatch);
+
+    setIsAddToCart((prevIsAddToCart) => (prevIsAddToCart ? false : true));
   };
 
   return (
@@ -66,7 +82,25 @@ const ProductCard = ({ product }) => {
         <span className="text-red-00 small-text">({discount}%Off)</span>
       </div>
       <div className="card-action ">
-        <button className="btn btn-contained purple">Buy</button>
+        {isAddToCart ? (
+          <button
+            onClick={() =>
+              handleAddToCart(authState.token, product, cartDispatch)
+            }
+            className="btn btn-outline purple"
+          >
+            Remove From Cart
+          </button>
+        ) : (
+          <button
+            onClick={() =>
+              handleAddToCart(authState.token, product, cartDispatch)
+            }
+            className="btn btn-contained purple"
+          >
+            Add To Cart
+          </button>
+        )}
       </div>
     </div>
   );
