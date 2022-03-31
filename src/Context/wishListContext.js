@@ -37,6 +37,7 @@ export const WishlistProvider = ({ children }) => {
   });
 
   const SaveToWishList = async (token, product, wishListDispatch) => {
+
     try {
       const response = await axios.post(
         wishlistApi,
@@ -46,15 +47,16 @@ export const WishlistProvider = ({ children }) => {
       if (response.status === 201) {
         wishListDispatch({
           type: wishListActions.ADD,
-          payload: response.data.wishlist[0],
+          payload: product,
         });
       }
     } catch (error) {
       console.log("error from wishList Func \n", error.message);
     }
   };
-
+  
   const RemoveFromWishList = async (token, product, wishListDispatch) => {
+
     try {
       const response = await axios.delete(
         wishlistApi + "/" + String(product._id),

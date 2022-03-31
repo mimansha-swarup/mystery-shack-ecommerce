@@ -9,8 +9,6 @@ const WishListCard = ({ product }) => {
 
   const localRemoveFromWishlist = (token, product, wishListDispatch) =>
     RemoveFromWishList(token, product, wishListDispatch);
-
-  // wishListDispatch({ type: wishListActions.REMOVE, payload: product });
   const handleMoveToBag = (token ,product,wishListDispatch) => {
     localRemoveFromWishlist(token ,product,wishListDispatch);
   };
