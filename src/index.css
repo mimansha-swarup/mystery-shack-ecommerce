@@ -59,6 +59,10 @@ code {
 .mr-3 {
   margin-right: 3rem;
 }
+.mx-auto {
+  margin-right: auto;
+  margin-left: auto;
+}
 .gap-1 {
   gap: 1rem;
 }
