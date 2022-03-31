@@ -4,13 +4,15 @@ import "./Navbar.css";
 import { BsHeart, BsBag, BsSearch } from "react-icons/bs";
 import { AiOutlineMenu } from "react-icons/ai";
 import { useState } from "react";
-import { useAuth, useFilters } from "../../Context";
+import { useAuth, useFilters, useWishList } from "../../Context";
 import { filterActions, authActions } from "../../Reducer/contant";
 const Navbar = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const { filterState, filterDispatch } = useFilters();
   const { searchQuery } = filterState;
   const { authState, authDispatch } = useAuth();
+  const { wishListState } = useWishList();
+
 
   const toggleDrawer = () =>
     setIsDrawerOpen((prevIsDrawerOpen) => (isDrawerOpen ? false : true));
@@ -24,9 +26,18 @@ const Navbar = () => {
         <AiOutlineMenu className="drawer nav-icons" onClick={toggleDrawer} />
         {isDrawerOpen ? (
           <ul>
-            <Link to="/login">
-              <li className="headline4">Login</li>
-            </Link>
+            {authState?.isAuth ? (
+              <li
+                onClick={() => authDispatch({ type: authActions.LOGOUT })}
+                className="headline4"
+              >
+                Logout
+              </li>
+            ) : (
+              <Link to="/login">
+                <li className="headline4">Login</li>
+              </Link>
+            )}
             <Link to="/cart">
               <li className="headline4">Cart</li>
             </Link>
@@ -58,7 +69,10 @@ const Navbar = () => {
           <div className=" mr-1 grey-color flex flex-column center">
             <div className="badge-wrapper">
               <BsHeart className="nav-icons" />
-              <div className="badge top-right red">0</div>
+              {
+                wishListState.data.length>0 &&
+              <div className="badge top-right red">{wishListState.data.length}</div>
+              }
             </div>
             <span className=" small-text">Wishlist</span>
           </div>
@@ -74,7 +88,10 @@ const Navbar = () => {
           </div>
         </Link>
         {authState?.isAuth ? (
-          <button onClick={()=>authDispatch({type:authActions.LOGOUT})}  className="btn btn-outline purple ml-2 semibold">
+          <button
+            onClick={() => authDispatch({ type: authActions.LOGOUT })}
+            className="btn btn-outline purple ml-2 semibold"
+          >
             Logout
           </button>
         ) : (

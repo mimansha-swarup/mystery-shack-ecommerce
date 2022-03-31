@@ -1,10 +1,28 @@
 import { useState } from "react";
 import { AiFillHeart, AiOutlineHeart, AiFillStar } from "react-icons/ai";
+import { useAuth, useWishList } from "../../../Context";
 import { DiscountedPrice } from "../../../Helper/DIscountedPrice";
+
 const ProductCard = ({ product }) => {
-  const { company, productName, image, rating, price, discount } = product;  //TODO: Destruct category Later
-  const [isLiked, setIsLiked] = useState(false);
-  const handleAddToWishlist = () => {
+  const { company, productName, image, rating, price, discount } = product; //TODO: Destruct category Later
+
+  const {
+    wishListState,
+    wishListDispatch,
+    SaveToWishList,
+    RemoveFromWishList,
+  } = useWishList();
+
+  const [isLiked, setIsLiked] = useState(wishListState.data.includes(product));
+  const { authState } = useAuth();
+
+  const handleAddToWishlist = (token, product, wishListDispatch) => {
+    if (isLiked) {
+     
+      RemoveFromWishList(token, product, wishListDispatch);
+    } else {
+      SaveToWishList(token, product, wishListDispatch);
+    }
     setIsLiked((prevIsLiked) => (prevIsLiked ? false : true));
   };
 
@@ -13,10 +31,17 @@ const ProductCard = ({ product }) => {
       <div className="media-cont">
         <img className="card-media" src={image} alt="Product" />
         {isLiked ? (
-          <AiFillHeart onClick={handleAddToWishlist} className="card-dismiss" />
+          <AiFillHeart
+            onClick={() =>
+              handleAddToWishlist(authState.token, product, wishListDispatch)
+            }
+            className="card-dismiss"
+          />
         ) : (
           <AiOutlineHeart
-            onClick={handleAddToWishlist}
+            onClick={() =>
+              handleAddToWishlist(authState.token, product, wishListDispatch)
+            }
             className="card-dismiss"
           />
         )}

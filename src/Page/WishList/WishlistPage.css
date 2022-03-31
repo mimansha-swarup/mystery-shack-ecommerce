@@ -20,6 +20,9 @@
 .wishlist-container .card-dismiss{
   color: var(--color-black-02);
 }
+.wishList-img{
+  max-width:15rem
+}
 
 @media (max-width: 1117px) {
   .grid-x4 {

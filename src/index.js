@@ -8,6 +8,7 @@ import {
   ProductsProvider,
   CategoriesProvider,
   AuthProvider,
+  WishlistProvider,
 } from "./Context";
 import { BrowserRouter } from "react-router-dom";
 
@@ -16,17 +17,19 @@ makeServer();
 
 ReactDOM.render(
   // <React.StrictMode>
-    <BrowserRouter>
-      <AuthProvider >
-      <CategoriesProvider>
-        <FilterProvider>
-          <ProductsProvider>
-            <App />
-          </ProductsProvider>
-        </FilterProvider>
-      </CategoriesProvider>
-      </AuthProvider >
-    </BrowserRouter>,
+  <BrowserRouter>
+    <AuthProvider>
+      <WishlistProvider>
+        <CategoriesProvider>
+          <FilterProvider>
+            <ProductsProvider>
+              <App />
+            </ProductsProvider>
+          </FilterProvider>
+        </CategoriesProvider>
+      </WishlistProvider>
+    </AuthProvider>
+  </BrowserRouter>,
   // </React.StrictMode>,
   document.getElementById("root")
 );

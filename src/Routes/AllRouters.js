@@ -1,5 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import { CartPage, HomePage, LoginPage, ProductsPage, SignupPage, WishlistPage } from "../Page/Index";
+import Mockman from "mockman-js";
 
 const AllRoutes = () => {
   return (
@@ -10,6 +11,7 @@ const AllRoutes = () => {
       <Route path="/wishlist" element={<WishlistPage />} />
       <Route path="/cart" element={<CartPage />} />
       <Route exact path="/" element={<HomePage />} />
+      <Route path="/mockman" element={<Mockman />} />
     </Routes>
   );
 };
