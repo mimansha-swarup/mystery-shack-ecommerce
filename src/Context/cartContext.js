@@ -4,6 +4,7 @@ import { cartApi } from "../Helper/Api/api";
 import { cartReducer } from "../Reducer/cartReducer";
 import { cartActions } from "../Reducer/contant";
 import { useAuth } from "./authContext";
+import { useToast } from "./toastContext";
 const cartContext = createContext();
 
 export const useCart = () => useContext(cartContext);
@@ -11,6 +12,7 @@ export const useCart = () => useContext(cartContext);
 export const CartProvider = ({ children }) => {
   const  [cartList,setCartList] = useState([])
   const {authState} = useAuth()
+  const {setToastData} =useToast()
   useEffect(() => {
     (async () => {
       try {
@@ -18,8 +20,13 @@ export const CartProvider = ({ children }) => {
           headers: { authorization: authState.token },
         });
   
-        if (response.status === 200) setCartList(response.data.cart);
+        if (response.status === 200) 
+          setCartList(response.data.cart);
+         
+          
+    
       } catch (error) {
+        setToastData(prevToastData=>[...prevToastData,{type:"error",message:error.message}])
         console.log("error in fetcing useState",error.message)
       }
     })();
@@ -39,9 +46,11 @@ export const CartProvider = ({ children }) => {
           type: cartActions.ADD,
           payload: { ...product, quantity: 1 },
         });
+        setToastData(prevToastData=>[...prevToastData,{type:"success",message:"Product added Successfully!!"}])
       }
     } catch (error) {
       console.log("error from cart\n", error.message);
+      setToastData(prevToastData=>[...prevToastData,{type:"error",message:error.message}])
     }
   };
   const deleteProductFromServer = async (token, product, cartDispatch) => {
@@ -56,9 +65,11 @@ export const CartProvider = ({ children }) => {
           type: cartActions.REMOVE,
           payload: product,
         });
+        setToastData(prevToastData=>[...prevToastData,{type:"success",message:"Product removed from Cart Successfully!!"}])
       }
     } catch (error) {
       console.log("error from cart\n", error.message);
+      setToastData(prevToastData=>[...prevToastData,{type:"error",message:error.message}])
     }
   };
 
@@ -80,8 +91,10 @@ export const CartProvider = ({ children }) => {
  
       if (response.status === 200) {
         cartDispatch({ type: cartActions[type.toUpperCase()],payload:product });
+        setToastData(prevToastData=>[...prevToastData,{type:"success",message:"Quantity Updated Successfully!!"}])
       }
     } catch (error) {
+      setToastData(prevToastData=>[...prevToastData,{type:"error",message:error.message}])
       
     }
   };
