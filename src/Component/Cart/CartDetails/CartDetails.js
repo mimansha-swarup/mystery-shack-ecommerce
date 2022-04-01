@@ -19,23 +19,23 @@ const CartDetails = () => {
       <hr class="line-horz" />
       <div class="flex space-between mb-1 mt-1">
         <span class="subtitle1">Price</span>
-        <span class="subtitle1">₹ {cartValueWithoutDiscount}</span>
+        <span class="subtitle1">₹{cartValueWithoutDiscount}</span>
       </div>
       <div class="flex space-between mb-1">
         <span class="subtitle1">Discount</span>
-        <span class="subtitle1 text-green-00">- ₹ {cartDiscountedPrice}</span>
+        <span class="subtitle1 text-green-00">- ₹{cartDiscountedPrice}</span>
       </div>
       <div class="flex space-between mb-1">
         <span class="subtitle1">Delivery Charges</span>
-        <span class="subtitle1">+ ₹ {deliveryFees}</span>
+        <span class="subtitle1">+ ₹{deliveryFees}</span>
       </div>
       <hr class="line-horz" />
       <div class="flex space-between mb-1 mt-1">
         <span class="subtitle1 bold">Total Amount</span>
-        <span class="subtitle1 bold">₹ {total}</span>
+        <span class="subtitle1 bold">₹{total}</span>
       </div>
       <hr class="line-horz" />
-      <p class="body1 mt-2">You will save ₹ {cartValueWithoutDiscount-total} on this order</p>
+      <p class="body1 mt-2">You will save ₹{cartValueWithoutDiscount-total} on this order</p>
     </div>
   );
 };
