@@ -77,7 +77,7 @@ export const CartProvider = ({ children }) => {
           },
         }
       );
-      console.log(response)
+ 
       if (response.status === 200) {
         cartDispatch({ type: cartActions[type.toUpperCase()],payload:product });
       }
