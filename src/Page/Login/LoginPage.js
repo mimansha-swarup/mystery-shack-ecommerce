@@ -2,7 +2,7 @@ import "./LoginPage.css";
 import { BiLogIn, BiShow, BiHide } from "react-icons/bi";
 import { IoIosArrowDropright } from "react-icons/io";
 import { Link } from "react-router-dom";
-import {  useState } from "react";
+import { useState } from "react";
 import { useAuth } from "../../Context";
 const LoginPage = () => {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
@@ -17,7 +17,7 @@ const LoginPage = () => {
 
     const emailDetails = event.target.email.value;
     const passwordDetails = event.target.password.value;
-    console.log(emailDetails, passwordDetails);
+
     Login(emailDetails, passwordDetails);
   };
   return (
@@ -46,7 +46,6 @@ const LoginPage = () => {
               id="password"
               placeholder="Password"
               required
-            
             />
             {isPasswordVisible ? (
               <BiHide

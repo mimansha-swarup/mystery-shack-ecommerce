@@ -18,7 +18,6 @@ const SignupPage = () => {
 
   const handleLoginFormSubmit = (event) => {
     event.preventDefault();
-    console.log("event");
     const fNameDetails = event.target.fName.value;
     const lNameDetails = event.target.lName.value;
     const emailDetails = event.target.email.value;
