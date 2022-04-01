@@ -6,6 +6,9 @@
   --gradient-purple-01 : linear-gradient(to right bottom, var(--color-purple-04) 1.26%, var(--color-purple-03) 100%);
 
 }
+html{
+  height: 100vh;
+}
 .grey-color{
   color: var(--color-ash-gray)
 }
@@ -20,4 +23,7 @@ a:-webkit-any-link {
 
 .react-icons{
   vertical-align: middle;
+}
+.width-half{
+  width: 50%;
 }

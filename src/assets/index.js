@@ -14,9 +14,12 @@ import trousers from "../assets/category-trousers.svg";
 import hrx from "../assets/hrx.webp";
 import roadster from "../assets/roadster.svg";
 import wrogn from "../assets/wrogn.svg";
+// wishlist
+import wishlistSVG from "../assets/wishlist.svg";
+import shopNowSVG from "../assets/shopNow.svg";
 
 const HeroImage = [HeroImg3, HeroImg1, HeroImg2];
 const CategoryImage = { tshirts, jeans, kurtas, shoes, sarees, trousers };
 const topBrandImages = { hrx, roadster, wrogn };
 
-export { NavBrandImg,HeroImage, CategoryImage, topBrandImages };
+export { NavBrandImg, HeroImage, CategoryImage, topBrandImages, wishlistSVG,shopNowSVG };
