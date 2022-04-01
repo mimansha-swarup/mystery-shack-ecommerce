@@ -5,14 +5,16 @@ import { BsHeart, BsBag, BsSearch } from "react-icons/bs";
 import { AiOutlineMenu } from "react-icons/ai";
 import { useState } from "react";
 import { useAuth, useCart, useFilters, useWishList } from "../../Context";
-import { filterActions, authActions } from "../../Reducer/contant";
+import { filterActions,  } from "../../Reducer/contant";
 const Navbar = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const { filterState, filterDispatch } = useFilters();
   const { searchQuery } = filterState;
-  const { authState, authDispatch } = useAuth();
+  const { authState,  Logout } = useAuth();
   const { wishListState } = useWishList();
   const { cartState } = useCart();
+ 
+
 
   const toggleDrawer = () =>
     setIsDrawerOpen((prevIsDrawerOpen) => (isDrawerOpen ? false : true));
@@ -28,7 +30,7 @@ const Navbar = () => {
           <ul>
             {authState?.isAuth ? (
               <li
-                onClick={() => authDispatch({ type: authActions.LOGOUT })}
+                onClick={() => Logout()}
                 className="headline4"
               >
                 Logout
@@ -94,7 +96,7 @@ const Navbar = () => {
         </Link>
         {authState?.isAuth ? (
           <button
-            onClick={() => authDispatch({ type: authActions.LOGOUT })}
+            onClick={() => Logout()}
             className="btn btn-outline purple ml-2 semibold"
           >
             Logout

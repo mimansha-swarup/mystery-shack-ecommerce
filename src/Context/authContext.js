@@ -52,11 +52,9 @@ export const AuthProvider = ({ children }) => {
         email,
         password,
       });
-      console.log(response);
 
       if (response.status === 201) {
-        const { encodedToken } = response.data;
-        console.log(encodedToken);
+        const { encodedToken } = response.data;       
 
         localStorage.setItem(
           "jwtAuth",
@@ -76,11 +74,11 @@ export const AuthProvider = ({ children }) => {
     }
   };
   const Logout = () => {
+    localStorage.removeItem("jwtAuth");
     authDispatch({
       type: authActions.Logout,
     });
 
-    localStorage.removeItem("jwtAuth");
   };
 
   return (
