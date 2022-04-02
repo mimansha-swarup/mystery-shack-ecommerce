@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import "./App.css";
-import { Navbar } from "./Component/index";
+import { Navbar, ToastContainer } from "./Component/index";
 import AllRoutes from "./Routes/AllRouters";
 
 function App() {
@@ -8,6 +8,7 @@ function App() {
     <div className="App">
       <Navbar />
       <AllRoutes />
+      <ToastContainer/>
     </div>
   );
 }

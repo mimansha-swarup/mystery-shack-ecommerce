@@ -1,6 +1,6 @@
 import "./ProductsPage.css";
 import { Filter, ProductCard } from "../../Component";
-import { useFilters, useProducts } from "../../Context";
+import { useAuth, useFilters, useProducts } from "../../Context";
 import { useState } from "react";
 import {
   
@@ -12,12 +12,14 @@ import {
 } from "../../Helper/FilterFunction";
 
 import { AiOutlineClose,AiOutlineMenuFold } from "react-icons/ai";
+import { Navigate } from "react-router-dom";
 
 const ProductsPage = () => {
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const { filterState } = useFilters();
 
   const { products, status } = useProducts();
+  const { authState } = useAuth();
   const handleFilterOpen = () => {
     setIsFilterOpen((prevIsFilterOpen) => (prevIsFilterOpen ? false : true));
   };
@@ -30,6 +32,8 @@ const ProductsPage = () => {
   const categoryList = filterByCategory(priceList, category);
   const searchedList = searchByName(categoryList, searchQuery);
   const filteredList = filterByRating(searchedList, rating);
+
+  if(!authState?.token) return <Navigate to="/login" replace />
 
   return (
     <main className="filter-pg mt-2">

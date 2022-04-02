@@ -1,0 +1,15 @@
+.toast-cont{
+  position: fixed;
+  top: 15%;
+  right: 5%;
+  transform: translate(0);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  z-index: 10;
+  max-width: 50%;
+}
+.toast-cont .toast{
+  position: relative;
+
+}

@@ -10,6 +10,7 @@ import axios from "axios";
 import { wishlistApi } from "../Helper/Api/api";
 import { wishListActions } from "../Reducer/contant";
 import { useAuth } from "./authContext";
+import { useToast } from "./toastContext";
 const wishListContext = createContext();
 
 export const useWishList = () => useContext(wishListContext);
@@ -17,6 +18,7 @@ export const useWishList = () => useContext(wishListContext);
 export const WishlistProvider = ({ children }) => {
   const [wishlistArray, setWishlistArray] = useState([]);
   const { authState } = useAuth();
+  const {setToastData} = useToast()
 
   useEffect(() => {
     (async () => {
@@ -27,6 +29,7 @@ export const WishlistProvider = ({ children }) => {
         console.log(response)
         if (response.status === 200) setWishlistArray(response.data.wishlist);
       } catch (error) {
+        setToastData(prevToastData=>[...prevToastData,{type:"error",message:error.message}])
         console.log("error in fetcing useState",error.message)
       }
     })();
@@ -49,8 +52,10 @@ export const WishlistProvider = ({ children }) => {
           type: wishListActions.ADD,
           payload: product,
         });
+        setToastData(prevToastData=>[...prevToastData,{type:"success",message:"Product added to Wishlist Successfully!!"}])
       }
     } catch (error) {
+      setToastData(prevToastData=>[...prevToastData,{type:"error",message:error.message}])
       console.log("error from wishList Func \n", error.message);
     }
   };
@@ -68,8 +73,11 @@ export const WishlistProvider = ({ children }) => {
       );
       if (response.status === 200) {
         wishListDispatch({ type: wishListActions.REMOVE, payload: product });
+        setToastData(prevToastData=>[...prevToastData,{type:"success",message:"Product removed from Wishlist Successfully!!"}])
+
       }
     } catch (error) {
+      setToastData(prevToastData=>[...prevToastData,{type:"error",message:error.message}])
       console.log("error from wishList Func", error.message);
     }
   };

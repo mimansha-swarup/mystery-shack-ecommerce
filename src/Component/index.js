@@ -8,6 +8,8 @@ import ProductCard from "./Product/ProductCard/ProductCard";
 import WishListCard from "./Wishlist/WishListCard/js/WishListCard";
 import CartDetails from "./Cart/CartDetails/CartDetails";
 import CartCard from "./Cart/CartCard/CartCard";
+import Toast from "./Toast/Toast";
+import ToastContainer from "./Toast/ToastContainer";
 
 export {
   Navbar,
@@ -19,5 +21,7 @@ export {
   BrandCard,
   WishListCard,
   CartDetails,
-  CartCard
+  CartCard,
+  Toast,
+  ToastContainer,
 };

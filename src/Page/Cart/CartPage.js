@@ -1,11 +1,13 @@
 import { shopNowSVG } from "../../assets";
 import { CartCard, CartDetails } from "../../Component";
-import { useCart } from "../../Context";
-import { Link } from "react-router-dom";
+import { useAuth, useCart } from "../../Context";
+import { Link, Navigate } from "react-router-dom";
 import "./CartPage.css";
 
 const CartPage = () => {
   const {cartState} = useCart()
+  const {authState} = useAuth()
+   if(!authState?.token) return <Navigate to="/login" replace />
   return (
     <main className="cart-container">
       {
