@@ -51,7 +51,8 @@ const Filter = () => {
       </div>
       <hr className="line-horz" />
       {/* show on basis of Availability */}
-      <p className="hedline6  bold ">Availability</p>
+      {/* TODO: will implement Later */}
+      {/* <p className="hedline6  bold ">Availability</p>
       <div className="flex ">
         <input
           type="checkbox"
@@ -67,7 +68,7 @@ const Filter = () => {
         <label htmlFor="out-of-stock">Show Out Of Stock </label>
       </div>
 
-      <hr className="line-horz" />
+      <hr className="line-horz" /> */}
       {/* Filter according to price range */}
       <p className="hedline6  bold ">Price</p>
       <div className="flex space-between">
