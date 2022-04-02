@@ -21,19 +21,22 @@ export const WishlistProvider = ({ children }) => {
   const {setToastData} = useToast()
 
   useEffect(() => {
-    (async () => {
-      try {
-        const response = await axios.get(wishlistApi, {
-          headers: { authorization: authState.token },
-        });
-        console.log(response)
-        if (response.status === 200) setWishlistArray(response.data.wishlist);
-      } catch (error) {
-        setToastData(prevToastData=>[...prevToastData,{type:"error",message:error.message}])
-        console.log("error in fetcing useState",error.message)
-      }
-    })();
-  }, []);
+    if(authState?.token){
+
+      (async () => {
+        try {
+          const response = await axios.get(wishlistApi, {
+            headers: { authorization: authState.token },
+          });
+          console.log(response)
+          if (response.status === 200) setWishlistArray(response.data.wishlist);
+        } catch (error) {
+          setToastData(prevToastData=>[...prevToastData,{type:"error",message:error.message}])
+          console.log("error in fetcing useState",error.message)
+        }
+      })();
+    }
+  }, [authState?.token]);
 
   const [wishListState, wishListDispatch] = useReducer(WishlistReduce, {
     data: wishlistArray,

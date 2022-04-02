@@ -14,23 +14,26 @@ export const CartProvider = ({ children }) => {
   const {authState} = useAuth()
   const {setToastData} =useToast()
   useEffect(() => {
-    (async () => {
-      try {
+    if(authState?.token){
+
+      (async () => {
+        try {
         const response = await axios.get(cartApi, {
           headers: { authorization: authState.token },
         });
-  
+        
         if (response.status === 200) 
           setCartList(response.data.cart);
-         
           
-    
-      } catch (error) {
-        setToastData(prevToastData=>[...prevToastData,{type:"error",message:error.message}])
-        console.log("error in fetcing useState",error.message)
-      }
-    })();
-  }, []);
+          
+          
+        } catch (error) {
+          setToastData(prevToastData=>[...prevToastData,{type:"error",message:error.message}])
+          console.log("error in fetcing useState",error.message)
+        }
+      })();
+    }
+    }, [authState?.token]);
 
   const [cartState, cartDispatch] = useReducer(cartReducer, { data: cartList });
 
