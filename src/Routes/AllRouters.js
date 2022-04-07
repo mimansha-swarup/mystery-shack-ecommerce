@@ -6,9 +6,9 @@ import {
   LoginPage,
   ProductsPage,
   SignupPage,
+  SingleProductPage,
   WishlistPage,
 } from "../Page/Index";
-import Mockman from "mockman-js";
 import PrivateRoutes from "./PrivateRouting";
 import { useAuth } from "../Context";
 
@@ -23,16 +23,17 @@ const AllRoutes = () => {
         element={<ProductsPage />} 
       />
       <Route
+        path="/products/:productId"
+        element={<SingleProductPage />} 
+      />
+      <Route
         path="/wishlist"
         element={<WishlistPage />}
       />
       <Route path="/cart" element={<CartPage />} />
       <Route exact path="/" element={<HomePage />} />
       <Route path="*" element={<Error404Page />} />
-      <Route
-        path="/mockman"
-        element={<Mockman />}
-      />
+      
       {
         authState?.isAuth ?(
           <>

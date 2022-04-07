@@ -2,8 +2,9 @@ import { MdCancel } from "react-icons/md";
 import { AiFillStar } from "react-icons/ai";
 import { DiscountedPrice } from "../../../../Helper/DIscountedPrice";
 import { useAuth, useCart, useWishList } from "../../../../Context";
+import { Link } from "react-router-dom";
 const WishListCard = ({ product }) => {
-  const { productName, image, rating, price, discount } = product;
+  const { _id,productName, image, rating, price, discount } = product;
   const { wishListState, wishListDispatch, RemoveFromWishList } = useWishList();
 
   const { authState } = useAuth();
@@ -24,15 +25,17 @@ const WishListCard = ({ product }) => {
 
   return (
     <div className="card">
-      <div className="media-cont">
-        <img className="card-media" src={image} alt="Product" />
-
         <MdCancel
           className="card-dismiss"
           onClick={() =>
             localRemoveFromWishlist(authState.token, product, wishListDispatch)
           }
         />
+        <Link to={`/products/${_id}`} >
+
+      <div className="media-cont">
+        <img className="card-media" src={image} alt="Product" />
+
 
         <div className="badge text-badge yellow bottom-left ">
           {rating}
@@ -45,15 +48,16 @@ const WishListCard = ({ product }) => {
             {productName}
           </p>
         </div>
-        <span className="mr-1">₹{price}</span>
+        <span className="mr-1 text-black-00">₹{price}</span>
         <span
           className="text-black-01 mr-1"
           style={{ textDecoration: "line-through" }}
-        >
+          >
           {DiscountedPrice(price, discount)}
         </span>
         <span className="text-red-00 small-text">({discount}%Off)</span>
       </div>
+        </Link>
       <div className="card-action ">
         <button
           onClick={() =>

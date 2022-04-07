@@ -66,6 +66,7 @@ input[type="radio"] {
 .card-body {
   padding: 0 1rem;
 }
+.card{position: relative;}
 
 .card-action {
   display: flex;
@@ -77,6 +78,7 @@ input[type="radio"] {
   font-size: 1.5rem;
   cursor: pointer;
   box-shadow: var(--Shadow-02);
+  z-index: 2;
 }
 .product-layout .card{
   cursor: pointer;

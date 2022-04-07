@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { AiFillPlusCircle, AiFillMinusCircle } from "react-icons/ai";
+import { Link } from "react-router-dom";
 import { useAuth, useCart, useWishList } from "../../../Context";
 import { DiscountedPrice } from "../../../Helper/DIscountedPrice";
 
@@ -34,11 +35,15 @@ const CartCard = ({ product }) => {
   };
 
   return (
+
     <div class="card  card-horz">
       <div class="flex">
+        <Link to={`/products/${_id}`} >
+
         <div class="media-cont">
           <img class="card-media" src={image} alt="productImage" />
         </div>
+            </Link>
         <div class="card-body space-between">
           <div class="card-header">
             <p class="card-title subtitle1 bold">{company}</p>
@@ -49,7 +54,7 @@ const CartCard = ({ product }) => {
             <span
               className="text-black-01 mr-1"
               style={{ textDecoration: "line-through" }}
-            >
+              >
               ₹{DiscountedPrice(price, discount)}
             </span>
             <span className="text-red-00 small-text">({discount}%Off)</span>
