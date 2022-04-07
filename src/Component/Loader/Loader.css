@@ -1,0 +1,13 @@
+.loader {
+  border: .5rem solid var(--color-purple-04);
+  border-top: .5rem solid var(--color-purple-01);
+  border-radius: 50%;
+  width: 3.5rem;
+  height: 3.5rem;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

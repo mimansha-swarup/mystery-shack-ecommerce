@@ -1,5 +1,5 @@
 import "./ProductsPage.css";
-import { Filter, ProductCard } from "../../Component";
+import { Filter, Loader, ProductCard } from "../../Component";
 import { useAuth, useFilters, useProducts } from "../../Context";
 import { useState } from "react";
 import {
@@ -59,7 +59,7 @@ const ProductsPage = () => {
           <div className="headline1 text-color-01">{status.error}</div>
         )}
         {status.isLoading ? (
-          <div>Loading...</div>
+          <Loader/>
         ) : (
           <div className="product-layout mt-1">
             {filteredList.map((product) => (
