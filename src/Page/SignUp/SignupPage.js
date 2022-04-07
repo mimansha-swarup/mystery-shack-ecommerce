@@ -2,7 +2,7 @@ import "../Login/LoginPage.css";
 import { BiUserPlus, BiShow, BiHide } from "react-icons/bi";
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import { useAuth } from "../../Context";
+import { useAuth, useToast } from "../../Context";
 
 const SignupPage = () => {
   const [isPasswordVisible, setIsPasswordVisible] = useState({
@@ -15,6 +15,7 @@ const SignupPage = () => {
       ...isPasswordVisible,
       [key]: !isPasswordVisible[key],
     });
+    const {setToastData}=useToast
 
   const handleLoginFormSubmit = (event) => {
     event.preventDefault();
@@ -25,6 +26,12 @@ const SignupPage = () => {
     const confirmPasswordDetails = event.target.confirmPassword.value;
     if (passwordDetails === confirmPasswordDetails) {
       Signup(emailDetails, passwordDetails, fNameDetails, lNameDetails);
+    }
+    else{
+      setToastData((prevToastData) => [
+        ...prevToastData,
+        { type: "error", message: "password is not same" },
+      ]);
     }
   };
   return (

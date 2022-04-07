@@ -4,6 +4,7 @@ import { loginPostApi, signupPostApi } from "../Helper/Api/api";
 import { authReducer } from "../Reducer/authReducer";
 import { authActions } from "../Reducer/contant";
 import { useNavigate } from "react-router-dom";
+import { useToast } from "./toastContext";
 
 const initialState = {
   token: JSON.parse(localStorage.getItem("jwtAuth"))?.token || "",
@@ -18,6 +19,7 @@ export const AuthProvider = ({ children }) => {
   const [authState, authDispatch] = useReducer(authReducer, initialState);
 
   const navigate = useNavigate();
+  const { setToastData } = useToast();
 
   const Login = async (email, password) => {
     try {
@@ -40,8 +42,12 @@ export const AuthProvider = ({ children }) => {
         navigate("/");
       }
     } catch (error) {
-      console.log("its error", error.message);
-      console.log(" error in details", error);
+      console.error("its error", error.message);
+      console.error(" error in details", error);
+      setToastData((prevToastData) => [
+        ...prevToastData,
+        { type: "error", message: error.message },
+      ]);
     }
   };
   const Signup = async (email, password, firstName, lastName) => {
@@ -70,7 +76,11 @@ export const AuthProvider = ({ children }) => {
         navigate("/");
       }
     } catch (error) {
-      console.log("its error", error.message);
+      console.error("its error", error.message);
+      setToastData((prevToastData) => [
+        ...prevToastData,
+        { type: "error", message: error.message },
+      ]);
     }
   };
   const Logout = () => {

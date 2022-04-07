@@ -23,6 +23,7 @@ export const CategoriesProvider = ({ children }) => {
       }
       try {
       } catch (error) {
+        console.error(error)
         setStatus({ isLoading: false, error: error.message });
       }
     })();

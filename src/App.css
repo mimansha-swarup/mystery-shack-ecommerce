@@ -19,6 +19,7 @@ html{
 }
 a:-webkit-any-link {
   text-decoration:none;
+  color: initial;
 }
 
 .react-icons{

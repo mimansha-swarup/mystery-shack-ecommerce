@@ -1,0 +1,24 @@
+.singleproduct-cont{
+  width: 80%;
+  margin: 0 auto;
+  padding: 3rem 0;
+}
+.singleproduct-cont .singleproduct-img{
+
+  max-width: 50%;
+}
+.singleproduct-cont  .details{
+  align-self: start;
+}
+
+@media (max-width: 768px) {
+ 
+  .productdetails-box{
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .details{
+    margin: 0 auto;
+  }
+}

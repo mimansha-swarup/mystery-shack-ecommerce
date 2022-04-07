@@ -10,6 +10,7 @@ import CartDetails from "./Cart/CartDetails/CartDetails";
 import CartCard from "./Cart/CartCard/CartCard";
 import Toast from "./Toast/Toast";
 import ToastContainer from "./Toast/ToastContainer";
+import Loader from "./Loader/Loader";
 
 export {
   Navbar,
@@ -24,4 +25,5 @@ export {
   CartCard,
   Toast,
   ToastContainer,
+  Loader
 };

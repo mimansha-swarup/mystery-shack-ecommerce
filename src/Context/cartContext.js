@@ -29,7 +29,7 @@ export const CartProvider = ({ children }) => {
           
         } catch (error) {
           setToastData(prevToastData=>[...prevToastData,{type:"error",message:error.message}])
-          console.log("error in fetcing useState",error.message)
+          console.error("error in fetcing useState",error.message)
         }
       })();
     }
@@ -52,7 +52,7 @@ export const CartProvider = ({ children }) => {
         setToastData(prevToastData=>[...prevToastData,{type:"success",message:"Product added Successfully!!"}])
       }
     } catch (error) {
-      console.log("error from cart\n", error.message);
+      console.error("error from cart\n", error.message);
       setToastData(prevToastData=>[...prevToastData,{type:"error",message:error.message}])
     }
   };
@@ -71,7 +71,7 @@ export const CartProvider = ({ children }) => {
         setToastData(prevToastData=>[...prevToastData,{type:"success",message:"Product removed from Cart Successfully!!"}])
       }
     } catch (error) {
-      console.log("error from cart\n", error.message);
+      console.error("error from cart\n", error.message);
       setToastData(prevToastData=>[...prevToastData,{type:"error",message:error.message}])
     }
   };
