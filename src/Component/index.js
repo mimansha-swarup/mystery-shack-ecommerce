@@ -11,6 +11,7 @@ import CartCard from "./Cart/CartCard/CartCard";
 import Toast from "./Toast/Toast";
 import ToastContainer from "./Toast/ToastContainer";
 import Loader from "./Loader/Loader";
+import { Specification } from "./Product/SinglePage/Specification";
 
 export {
   Navbar,
@@ -25,5 +26,6 @@ export {
   CartCard,
   Toast,
   ToastContainer,
+  Specification,
   Loader
 };
