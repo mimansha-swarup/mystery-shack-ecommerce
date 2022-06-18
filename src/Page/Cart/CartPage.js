@@ -28,7 +28,7 @@ const CartPage = () => {
           </>
       ):(
         <div className="flex flex-column center mx-auto mt-3">
-          <img class="width-half mb-3 wishList-img" src={shopNowSVG} alt="empty bag"/>
+          <img className="width-half mb-3 wishList-img" src={shopNowSVG} alt="empty bag"/>
           <h2 className="headline2 text-center">Empty Wishlist</h2>
             <h4 className="headline4 text-center">
               You have no items in your wishlist. Start adding!

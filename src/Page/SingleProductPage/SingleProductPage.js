@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { useAuth, useCart, useProducts, useWishList } from "../../Context";
+import { useAuth, useCart, useProducts, useToast, useWishList } from "../../Context";
 import { DiscountedPrice } from "../../Helper/DIscountedPrice";
 import "./SingleProductPage.css";
 import { Specification } from "../../Component";
@@ -10,6 +10,7 @@ const SingleProductPage = () => {
   const [currProduct, setCurrProduct] = useState([]);
   const { products } = useProducts();
   const { authState } = useAuth();
+  const {setToastData} = useToast()
 
   const findProduct = () =>
     products.filter((eachProduct) => eachProduct._id === productId)[0];
@@ -65,6 +66,7 @@ const SingleProductPage = () => {
         {currProduct?.moreImages &&
           currProduct?.moreImages.map((imgPath) => (
             <img
+            key={imgPath}
               src={imgPath}
               alt={currProduct?.productName}
               className="img-responsive singleproduct-img"
@@ -134,8 +136,10 @@ const SingleProductPage = () => {
               </Link>
           ) : (
             <button
-              onClick={() =>
+              onClick={() =>{
                 handleAddToCart(authState.token, currProduct, cartDispatch)
+                setToastData(prevToastData=>[...prevToastData,{type:"success",message:"Added to Bag!"}])
+              }
               }
               className="btn btn-contained purple "
             >

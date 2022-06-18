@@ -29,11 +29,11 @@ export const CartProvider = ({ children }) => {
           
         } catch (error) {
           setToastData(prevToastData=>[...prevToastData,{type:"error",message:error.message}])
-          console.error("error in fetcing useState",error.message)
+          console.error("error in fetcing useState",error)
         }
       })();
     }
-    }, [authState?.token]);
+    }, [authState.token, setToastData]);
 
   const [cartState, cartDispatch] = useReducer(cartReducer, { data: cartList });
 
@@ -49,10 +49,10 @@ export const CartProvider = ({ children }) => {
           type: cartActions.ADD,
           payload: { ...product, quantity: 1 },
         });
-        setToastData(prevToastData=>[...prevToastData,{type:"success",message:"Product added Successfully!!"}])
+        // setToastData(prevToastData=>[...prevToastData,{type:"success",message:"Product added Successfully!!"}])
       }
     } catch (error) {
-      console.error("error from cart\n", error.message);
+      console.error("error from cart\n", error);
       setToastData(prevToastData=>[...prevToastData,{type:"error",message:error.message}])
     }
   };
@@ -68,7 +68,7 @@ export const CartProvider = ({ children }) => {
           type: cartActions.REMOVE,
           payload: product,
         });
-        setToastData(prevToastData=>[...prevToastData,{type:"success",message:"Product removed from Cart Successfully!!"}])
+        
       }
     } catch (error) {
       console.error("error from cart\n", error.message);
@@ -94,7 +94,7 @@ export const CartProvider = ({ children }) => {
  
       if (response.status === 200) {
         cartDispatch({ type: cartActions[type.toUpperCase()],payload:product });
-        setToastData(prevToastData=>[...prevToastData,{type:"success",message:"Quantity Updated Successfully!!"}])
+       
       }
     } catch (error) {
       setToastData(prevToastData=>[...prevToastData,{type:"error",message:error.message}])
