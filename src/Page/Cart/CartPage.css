@@ -12,6 +12,12 @@
   margin: 0 auto;
   flex-grow: 1;
 }
+.cart-container .cartdetails-card .space {
+margin: .5rem 0 .5rem 0;
+}
+ .cartdetails-card .gap-2 {
+  gap:1.25rem
+}
 .cartdetails-card .line-horz {
   margin: 0.25rem 0;
 }
