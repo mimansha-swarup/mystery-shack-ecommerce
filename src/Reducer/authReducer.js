@@ -7,12 +7,14 @@ export const authReducer = (state, action) => {
         ...state,
         token: action.payload.token,
         isAuth: action.payload.isAuth,
+        customer: action.payload.customer,
       };
     case authActions.LOGOUT:
       return {
         ...state,
         token: "",
         isAuth: false,
+        customer:{}
       };
 
     default:

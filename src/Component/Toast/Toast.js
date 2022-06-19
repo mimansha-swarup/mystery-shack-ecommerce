@@ -23,7 +23,7 @@ const Toast = ({ type, message }) => {
 
   return (
     <div
-      style={{ ...toastType[type], display: dispay }}
+      style={{ ...toastType[type], display: dispay, width:"15rem" }}
       className="toast"
     >
       <p className="subtitle2">

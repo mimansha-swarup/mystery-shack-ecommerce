@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { AiFillHeart, AiOutlineHeart, AiFillStar } from "react-icons/ai";
 import { Link } from "react-router-dom";
-import { useAuth, useCart, useWishList } from "../../../Context";
+import { useAuth, useCart, useToast, useWishList } from "../../../Context";
 import { DiscountedPrice } from "../../../Helper/DIscountedPrice";
 
 const ProductCard = ({ product }) => {
@@ -17,6 +17,7 @@ const ProductCard = ({ product }) => {
   const { authState } = useAuth();
   const { cartState, cartDispatch, postCartToServer, deleteProductFromServer } =
     useCart();
+  const { setToastData } = useToast();
 
   const isPresent = (list, product) =>
     list.filter((prod) => prod._id === product._id).length > 0;
@@ -85,18 +86,26 @@ const ProductCard = ({ product }) => {
       <div className="card-action ">
         {isAddToCart ? (
           <button
-            onClick={() =>
-              handleAddToCart(authState.token, product, cartDispatch)
-            }
+            onClick={() => {
+              handleAddToCart(authState.token, product, cartDispatch);
+              setToastData((prevToastData) => [
+                ...prevToastData,
+                { type: "success", message: "Item removed from Bag!" },
+              ]);
+            }}
             className="btn btn-outline purple"
           >
             Remove From Cart
           </button>
         ) : (
           <button
-            onClick={() =>
-              handleAddToCart(authState.token, product, cartDispatch)
-            }
+            onClick={() => {
+              handleAddToCart(authState.token, product, cartDispatch);
+              setToastData((prevToastData) => [
+                ...prevToastData,
+                { type: "success", message: "Added to Bag!" },
+              ]);
+            }}
             className="btn btn-contained purple"
           >
             Add To Cart

@@ -21,3 +21,10 @@ export const cartActions = {
   INCREMENT: "INCREASE_QUANTITY",
   DECREMENT: "DECREASE_QUANTITY",
 };
+
+export const addressActions = {
+  ADD_ADDRESS:"ADD_ADDRESS"
+}
+export const ordersActions = {
+  SET_ORDERS:"SET_ORDERS"
+}

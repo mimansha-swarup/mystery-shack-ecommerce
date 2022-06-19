@@ -1,14 +1,23 @@
 
-// import { categories } from "../../backend/db/categories";
+import { useEffect } from "react";
 import { topBrands } from "../../backend/db/topBrand";
 import { CategoryCard, Footer, Hero, BrandCard, Loader } from "../../Component";
-import { useCategories } from "../../Context";
+import { useCategories, useFilters } from "../../Context";
+import { filterActions } from "../../Reducer/contant";
 
 import "./HomePage.css";
 
 const HomePage = () => {
   const {categoriesData,status} = useCategories()
-  // console.log(categories)
+  const { filterDispatch } = useFilters();
+  useEffect(
+    ()=>{
+      filterDispatch({
+        type: filterActions.CLEAR,
+      })
+    },[]
+  )
+
   return (
     <>
       <Hero />

@@ -5,12 +5,13 @@ import BrandCard from "./Home/BrandCard/BrandCard";
 import Footer from "./Footer/Footer";
 import Filter from "./Product/filter/Filter";
 import ProductCard from "./Product/ProductCard/ProductCard";
-import WishListCard from "./Wishlist/WishListCard/js/WishListCard";
+import WishListCard from "./Wishlist/WishListCard/WishListCard";
 import CartDetails from "./Cart/CartDetails/CartDetails";
 import CartCard from "./Cart/CartCard/CartCard";
 import Toast from "./Toast/Toast";
 import ToastContainer from "./Toast/ToastContainer";
 import Loader from "./Loader/Loader";
+import { Specification } from "./Product/SinglePage/Specification";
 
 export {
   Navbar,
@@ -25,5 +26,6 @@ export {
   CartCard,
   Toast,
   ToastContainer,
+  Specification,
   Loader
 };

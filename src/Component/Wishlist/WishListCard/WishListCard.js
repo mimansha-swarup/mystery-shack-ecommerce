@@ -1,7 +1,7 @@
 import { MdCancel } from "react-icons/md";
 import { AiFillStar } from "react-icons/ai";
-import { DiscountedPrice } from "../../../../Helper/DIscountedPrice";
-import { useAuth, useCart, useWishList } from "../../../../Context";
+import { DiscountedPrice } from "../../../Helper/DIscountedPrice";
+import { useAuth, useCart, useWishList } from "../../../Context";
 import { Link } from "react-router-dom";
 const WishListCard = ({ product }) => {
   const { _id,productName, image, rating, price, discount } = product;

@@ -6,7 +6,7 @@ const ToastContainer = () => {
   return ( 
     <div className="toast-cont">
       {
-        toastData.map(data=><Toast type={data.type} message={data.message} />)
+        toastData.map((data,index)=><Toast key={index} type={data.type} message={data.message} />)
       }
     </div>
    );
