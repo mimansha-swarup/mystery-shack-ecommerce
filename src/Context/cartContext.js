@@ -33,7 +33,7 @@ export const CartProvider = ({ children }) => {
         }
       })();
     }
-    }, [authState.token, setToastData]);
+    }, [authState?.token, setToastData]);
 
   const [cartState, cartDispatch] = useReducer(cartReducer, { data: cartList });
 
@@ -49,7 +49,6 @@ export const CartProvider = ({ children }) => {
           type: cartActions.ADD,
           payload: { ...product, quantity: 1 },
         });
-        // setToastData(prevToastData=>[...prevToastData,{type:"success",message:"Product added Successfully!!"}])
       }
     } catch (error) {
       console.error("error from cart\n", error);
