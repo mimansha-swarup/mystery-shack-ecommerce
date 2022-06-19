@@ -20,6 +20,11 @@ const LoginPage = () => {
 
     Login(emailDetails, passwordDetails);
   };
+
+  const { emailDetails, passwordDetails } = {
+    emailDetails: "mactavish@gmail.com",
+    passwordDetails: "mactavishsoap",
+  };
   return (
     <main className="authentication-body flex center">
       <div className="card authentication-container ">
@@ -59,20 +64,20 @@ const LoginPage = () => {
               />
             )}
           </div>
-          <div className=" flex  space-between">
-            <span className="flex ">
-              <input type="checkbox" name="remember" id="remember" />
-              <label htmlFor="remember">Remember Me</label>
-            </span>
-            <Link to="./forgot-password" className="btn btn-text teal">
-              Forgot Your Password?
-            </Link>
-          </div>
 
           <button type="submit" className="btn btn-contained purple">
             LOG IN
           </button>
 
+          <div className=" flex  center">
+            <button
+              className="btn btn-text purple text-on-button"
+              onClick={() => Login(emailDetails, passwordDetails)}
+            >
+              Login as Guest
+            </button>
+          </div>
+          <hr className="line-horz mt-0 mb-0" />
           <Link to="/signup" className="subtitle1 text-center">
             Create New Account <IoIosArrowDropright className="react-icons " />
           </Link>

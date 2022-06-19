@@ -29,3 +29,8 @@
 .authentication-container.card .flex .input-group {
   width: 47%;
 }
+
+.authentication-container.card .line-horz{
+  margin-top: 0;
+  margin-bottom: .5rem;
+}
