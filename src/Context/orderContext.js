@@ -3,6 +3,7 @@ import { useContext, createContext } from "react";
 import axios from "axios";
 import { orderReducer } from "../Reducer/orderReducer";
 import { useAuth } from "./authContext";
+import { ordersApi } from "../Helper/Api/api";
 
 const ordersContext = createContext();
 
@@ -18,7 +19,7 @@ export const OrdersProvider = ({ children }) => {
   const addOrder = async (order) => {
     try {
       const { status, data } = await axios.post(
-        "/api/user/orders",
+        ordersApi,
         { ...order },
         { headers: { authorization: authState?.token } }
       );
