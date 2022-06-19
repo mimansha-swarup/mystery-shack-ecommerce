@@ -9,9 +9,10 @@ import { useToast } from "./toastContext";
 const initialState = {
   token: JSON.parse(localStorage.getItem("jwtAuth"))?.token || "",
   isAuth: JSON.parse(localStorage.getItem("jwtAuth"))?.isAuth || false,
+  customer: JSON.parse(localStorage.getItem("jwtAuth"))?.customer || {},
 };
 
-const authContext = createContext("test");
+const authContext = createContext();
 
 export const useAuth = () => useContext(authContext);
 
@@ -27,22 +28,29 @@ export const AuthProvider = ({ children }) => {
 
       if (response.status === 200) {
         const { encodedToken } = response.data;
-
+        const customer = {
+          name: `${response.data?.foundUser?.firstName} ${response.data?.foundUser?.lastName}`,
+          email: response.data?.foundUser?.email,
+        };
         localStorage.setItem(
           "jwtAuth",
-          JSON.stringify({ token: encodedToken, isAuth: true })
+          JSON.stringify({
+            token: encodedToken,
+            isAuth: true,
+            customer,
+          })
         );
         authDispatch({
           type: authActions.LOGIN,
           payload: {
             token: encodedToken,
             isAuth: true,
+            customer,
           },
         });
         navigate("/");
       }
     } catch (error) {
-      console.error("its error", error.message);
       console.error(" error in details", error);
       setToastData((prevToastData) => [
         ...prevToastData,
@@ -58,19 +66,25 @@ export const AuthProvider = ({ children }) => {
         email,
         password,
       });
+    
+      const customer = {
+        name: `${response.data?.createdUser?.firstName} ${response.data?.createdUser?.lastName}`,
+        email: response.data?.createdUser?.email,
+      };
 
       if (response.status === 201) {
-        const { encodedToken } = response.data;       
+        const { encodedToken } = response.data;
 
         localStorage.setItem(
           "jwtAuth",
-          JSON.stringify({ token: encodedToken, isAuth: true })
+          JSON.stringify({ token: encodedToken, isAuth: true, customer })
         );
         authDispatch({
           type: authActions.LOGIN,
           payload: {
             token: encodedToken,
             isAuth: true,
+            customer,
           },
         });
         navigate("/");
@@ -88,7 +102,6 @@ export const AuthProvider = ({ children }) => {
     authDispatch({
       type: authActions.Logout,
     });
-
   };
 
   return (
