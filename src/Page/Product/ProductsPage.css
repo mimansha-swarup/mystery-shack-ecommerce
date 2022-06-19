@@ -10,12 +10,10 @@
   padding: 1rem 1.5rem;
   border-radius: 0.25rem;
   color: var(--color-white-02);
-  /* height: fit-content; */
 }
 
 .absolute-sidebar {
   position: absolute;
-  /* right: 0; */
   display: none;
 }
 .sidebar #price-range {
@@ -146,8 +144,11 @@ input[type="radio"] {
 @media (max-width: 389px) {
   .product-layout {
     grid-template-columns: repeat(1, 1fr);
-    width: 80%;
-    margin: 1rem auto;
+    margin: 1rem  0;
+  }
+  .product-layout .card{
+    margin: auto;
+    width: 90%;
   }
 
   .card-subtitle {

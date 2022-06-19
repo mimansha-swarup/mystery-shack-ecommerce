@@ -20,7 +20,7 @@ const CartDetails = () => {
       <h6 className="headline6 regular mb-0 text-black-00"> PRICE DETAILS</h6>
 
       <hr className="line-horz" />
-      <div classNameName="flex flex-column gap-2 ext-black-00">
+      <div className="flex flex-column gap-2 text-black-00">
         <div className="flex space-between ">
           <span className="subtitle1">Price</span>
           <span className="subtitle1">₹{cartValueWithoutDiscount}</span>
