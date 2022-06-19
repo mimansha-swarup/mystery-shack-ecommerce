@@ -36,18 +36,18 @@ const CartCard = ({ product }) => {
 
   return (
 
-    <div class="card  card-horz">
-      <div class="flex">
+    <div className="card  card-horz">
+      <div className="flex">
         <Link to={`/products/${_id}`} >
 
-        <div class="media-cont">
-          <img class="card-media" src={image} alt="productImage" />
+        <div className="media-cont">
+          <img className="card-media" src={image} alt="productImage" />
         </div>
             </Link>
-        <div class="card-body space-between">
-          <div class="card-header">
-            <p class="card-title subtitle1 bold">{company}</p>
-            <p class="card-subtitle subtitle1">{productName}</p>
+        <div className="card-body space-between">
+          <div className="card-header">
+            <p className="card-title subtitle1 bold">{company}</p>
+            <p className="card-subtitle subtitle1">{productName}</p>
           </div>
           <div>
             <span className="mr-1">₹{price}</span>
@@ -90,7 +90,7 @@ const CartCard = ({ product }) => {
               }
             />
           </div>
-          <div class="card-action flex">
+          <div className="card-action flex">
             <button
               onClick={() =>
                 handleMoveToWishlist(
@@ -100,7 +100,7 @@ const CartCard = ({ product }) => {
                   wishListDispatch
                 )
               }
-              class="btn btn-outline purple semibold"
+              className="btn btn-outline purple semibold"
             >
               MOVE TO WISHLIST
             </button>
@@ -108,7 +108,7 @@ const CartCard = ({ product }) => {
               onClick={() =>
                 deleteProductFromServer(authState.token, product, cartDispatch)
               }
-              class="btn btn-text purple semibold "
+              className="btn btn-text purple semibold "
             >
               REMOVE
             </button>
