@@ -112,7 +112,7 @@ export const removeAddressHandler = function (schema, request) {
 
     const addressId = request.params.addressId;
 
-    userAddress = userAddress.filter(item => item._id !== addressId);
+    userAddress = userAddress.filter((item) => item._id !== addressId);
     this.db.users.update(
       {
         _id: userId,
@@ -162,10 +162,10 @@ export const updateAddressHandler = function (schema, request) {
     }).address;
 
     const {
-      address: { name, mobile, zipCode, street, state, country },
+      address: { name, mobile, zipCode, street, state, country,type },
     } = JSON.parse(request.requestBody);
 
-    userAddress.forEach(address => {
+    userAddress.forEach((address) => {
       if (address._id === addressId) {
         address.name = name;
         address.street = street;
@@ -173,6 +173,7 @@ export const updateAddressHandler = function (schema, request) {
         address.country = country;
         address.zipCode = zipCode;
         address.mobile = mobile;
+        address.type = type;
         address.updatedAt = formatDate();
       }
     });
