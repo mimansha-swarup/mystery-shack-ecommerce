@@ -29,6 +29,7 @@
   border-radius: 0.25rem;
   background-color: var(--Elevation-03);
   box-shadow: var(--Shadow-03);
+  color: var(--color-black-00);
 }
 
 .address-container .modal {

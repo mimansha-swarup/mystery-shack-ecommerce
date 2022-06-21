@@ -10,8 +10,8 @@ export const AddressHolder = ({ address }) => {
 
   return (
     <address className="address-holder mt-1">
-      <div className="address-badge caption">{address?.type}</div>
-      <span className="subtitle1 semibold">{address?.name}</span>
+      <div className="address-badge caption text-black-00">{address?.type}</div>
+      <span className="subtitle1 semibold text-black-00">{address?.name}</span>
 
       <p className="body2 mb-0 text-black-01 ">{address?.street}</p>
       <p className="body2 mt-0 text-black-01">

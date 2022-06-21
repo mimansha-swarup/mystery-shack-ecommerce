@@ -2,7 +2,7 @@ import { useAddress } from "../../Context";
 import Modal from "../Modal/Modal";
 
 const inititalValue = {
-  name: "sds",
+  name: "",
   street: "",
   state: "",
   country: "",
