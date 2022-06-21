@@ -1,10 +1,12 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import {
+  AddressPage,
   CartPage,
   Error404Page,
   HomePage,
   LoginPage,
   ProductsPage,
+  ProfilePage,
   SignupPage,
   SingleProductPage,
   WishlistPage,
@@ -25,6 +27,14 @@ const AllRoutes = () => {
       <Route
         path="/products/:productId"
         element={<SingleProductPage />} 
+      />
+      <Route
+        path="/profile"
+        element={<ProfilePage />} 
+      />
+      <Route
+        path="/address"
+        element={<AddressPage />} 
       />
       <Route
         path="/wishlist"

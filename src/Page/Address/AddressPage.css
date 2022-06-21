@@ -1,0 +1,57 @@
+.address-container {
+  width: 50%;
+  background-color: var(--Elevation-01);
+  padding: 1rem 2rem;
+  margin: 3rem auto;
+}
+.address-container .flex .btn {
+  width: 100%;
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+.address-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+.address-badge {
+  padding: 0.25rem 0.5rem;
+  background-color: var(--Elevation--01);
+  box-shadow: var(--Shadow-01);
+  width: fit-content;
+  border-radius: 0.25rem;
+  margin-bottom: 0.5rem;
+}
+.address-holder {
+  padding: 1rem;
+  border-radius: 0.25rem;
+  background-color: var(--Elevation-03);
+  box-shadow: var(--Shadow-03);
+}
+
+.address-container .modal {
+  width: 80%;
+}
+.address-container .modal .address-form input[type="text"] {
+  width: 100%;
+}
+.address-form input,
+.address-form textarea {
+  background-color: var(--Elevation--01);
+  padding: 0.5rem 1rem;
+  border: none;
+  box-shadow: var(--Shadow--01);
+  border-radius: 0.25rem;
+  color: var(--color-black-00);
+}
+.modal{
+  position: fixed;
+}
+
+@media (max-width: 551px) {
+  .address-container {
+    width: 85%;
+  }
+}

@@ -1,4 +1,4 @@
-import { useReducer, useContext, createContext } from "react";
+import { useReducer, useContext, createContext, useEffect } from "react";
 import axios from "axios";
 
 import { addressReducer } from "../Reducer/addressReducer";
@@ -17,12 +17,33 @@ export const AddressProvider = ({ children }) => {
 
   const { authState } = useAuth();
 
+  useEffect(() => {
+    if (authState?.token) {
+      (async () => {
+        try {
+          const { status, data } = await axios.get(addressApi, {
+            headers: { authorization: authState.token },
+          });
+
+          if (status === 200)
+            addressDispatch({
+              type: addressActions.ADD_ADDRESS,
+              payload: data.address,
+            });
+        } catch (error) {
+          console.error("error in fetcing address", error);
+        }
+      })();
+    }
+  }, [authState?.token]);
+
   const addNewAddress = async (address) => {
     try {
+     
       const { status, data } = await axios.post(
         addressApi,
         { address },
-        { headers: { authorization: authState?.token } }
+        { headers: { authorization: authState.token } }
       );
 
       if (status === 201) {
@@ -32,19 +53,19 @@ export const AddressProvider = ({ children }) => {
         });
       }
     } catch (err) {
-      console.error("error in fetcing address", err);
+      console.log("error in fetcing address", err);
     }
   };
 
-  const editAddress = async (address) => {
-
+  const editAddress = async (id, address) => {
     try {
       const { status, data } = await axios.post(
-        concatedApi(addressApi, address._id),
+        concatedApi(addressApi, id),
         { address },
         { headers: { authorization: authState?.token } }
       );
- 
+  
+
       if (status === 200) {
         addressDispatch({
           type: addressActions.ADD_ADDRESS,
@@ -79,7 +100,15 @@ export const AddressProvider = ({ children }) => {
   };
 
   return (
-    <addressContext.Provider value={{ addressState, addressDispatch, addNewAddress, editAddress, deleteAddress }}>
+    <addressContext.Provider
+      value={{
+        addressState,
+        addressDispatch,
+        addNewAddress,
+        editAddress,
+        deleteAddress,
+      }}
+    >
       {children}
     </addressContext.Provider>
   );

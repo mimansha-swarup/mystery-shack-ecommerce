@@ -12,6 +12,9 @@ import Toast from "./Toast/Toast";
 import ToastContainer from "./Toast/ToastContainer";
 import Loader from "./Loader/Loader";
 import { Specification } from "./Product/SinglePage/Specification";
+import { AddressHolder } from "./Address/AddressHolder";
+import Modal from "./Modal/Modal";
+import { AddressModal } from "./Address/AddressModal";
 
 export {
   Navbar,
@@ -27,5 +30,8 @@ export {
   Toast,
   ToastContainer,
   Specification,
-  Loader
+  Loader,
+  AddressHolder,
+  Modal,
+  AddressModal,
 };

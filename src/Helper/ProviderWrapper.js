@@ -6,6 +6,8 @@ import {
   WishlistProvider,
   CartProvider,
   ToastProvider,
+  AddressProvider,
+  OrdersProvider,
 } from "../Context";
 
 const ProviderWrapper = ({ children }) => {
@@ -16,7 +18,11 @@ const ProviderWrapper = ({ children }) => {
           <CartProvider>
             <CategoriesProvider>
               <FilterProvider>
-                <ProductsProvider>{children}</ProductsProvider>
+                <AddressProvider>
+                  <OrdersProvider>
+                    <ProductsProvider>{children}</ProductsProvider>
+                  </OrdersProvider>
+                </AddressProvider>
               </FilterProvider>
             </CategoriesProvider>
           </CartProvider>
