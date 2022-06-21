@@ -24,9 +24,7 @@ export const CartProvider = ({ children }) => {
         
         if (response.status === 200) 
           setCartList(response.data.cart);
-          
-          
-          
+      
         } catch (error) {
           setToastData(prevToastData=>[...prevToastData,{type:"error",message:error.message}])
           console.error("error in fetcing useState",error)
