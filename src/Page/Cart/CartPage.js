@@ -1,19 +1,18 @@
 import { shopNowSVG } from "../../assets";
 import { CartCard, CartDetails, Modal } from "../../Component";
-import { useAddress, useAuth, useCart } from "../../Context";
-import { Link, Navigate } from "react-router-dom";
+import { useAddress,  useCart } from "../../Context";
+import { Link } from "react-router-dom";
 import "./CartPage.css";
 import { useState } from "react";
 import { addressActions } from "../../Reducer/contant";
 
 const CartPage = () => {
   const { cartState } = useCart();
-  const { authState } = useAuth();
   const { addressState, addressDispatch } = useAddress();
   const { defaultAddress } = addressState;
   const [isOpen, setIsOpen] = useState(false);
   const toggleIsOpen = () => setIsOpen((prev) => !prev);
-  if (!authState?.token) return <Navigate to="/login" replace />;
+  
   return (
     <main className="cart-container">
       {cartState?.data.length > 0 ? (
