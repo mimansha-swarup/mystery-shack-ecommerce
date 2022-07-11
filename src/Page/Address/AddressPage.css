@@ -49,6 +49,8 @@
 }
 .modal{
   position: fixed;
+  max-height: 80%;
+  overflow: auto;
 }
 
 @media (max-width: 551px) {

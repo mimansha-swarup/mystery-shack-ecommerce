@@ -13,6 +13,7 @@ export const useAddress = () => useContext(addressContext);
 export const AddressProvider = ({ children }) => {
   const [addressState, addressDispatch] = useReducer(addressReducer, {
     address: [],
+    defaultAddress:{}
   });
 
   const { authState } = useAuth();
@@ -29,6 +30,10 @@ export const AddressProvider = ({ children }) => {
             addressDispatch({
               type: addressActions.ADD_ADDRESS,
               payload: data.address,
+            });
+            addressDispatch({
+              type: addressActions.SET_DEFAULT,
+              payload: data.address[data.address.length-1],
             });
         } catch (error) {
           console.error("error in fetcing address", error);

@@ -1,4 +1,5 @@
 import { useAddress } from "../../Context";
+import { addressActions } from "../../Reducer/contant";
 import Modal from "../Modal/Modal";
 
 const inititalValue = {
@@ -17,13 +18,20 @@ export const AddressModal = ({
   isEdit = false,
   addressData = inititalValue,
 }) => {
-  const { addNewAddress, editAddress } = useAddress();
+  const { addNewAddress, editAddress, addressDispatch } = useAddress();
 
-  const handleAddNewAddress = (address) =>
-    isEdit ? editAddress(addressData?._id, address) : addNewAddress(address);
+  const handleAddNewAddress = (address) => {
+    if (isEdit) editAddress(addressData?._id, address);
+    else addNewAddress(address);
+    addressDispatch({
+      type: addressActions.SET_DEFAULT,
+      payload: { ...address, _id: addressData?._id },
+    });
+  };
 
   const handleAddressForm = (event) => {
     event.preventDefault();
+
     const getValue = (key) => event.target[key].value;
     const getChekedValue = (key, index) => event.target[key][index];
 
@@ -129,7 +137,7 @@ export const AddressModal = ({
           </button>
           <button
             onClick={toggleIsOpen}
-            type="reset"
+            type="button"
             className="btn btn-text teal flex center"
           >
             Cancel

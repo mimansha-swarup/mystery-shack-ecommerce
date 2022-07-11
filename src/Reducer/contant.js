@@ -23,7 +23,8 @@ export const cartActions = {
 };
 
 export const addressActions = {
-  ADD_ADDRESS:"ADD_ADDRESS"
+  ADD_ADDRESS:"ADD_ADDRESS",
+  SET_DEFAULT:"SET_DEFAULT"
 }
 export const ordersActions = {
   SET_ORDERS:"SET_ORDERS"
