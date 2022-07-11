@@ -1,0 +1,78 @@
+.order-container {
+  width: 50%;
+  padding: 1rem 2rem;
+  margin: 3rem auto;
+}
+
+.order-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.order-header{
+  padding: 0 0 0 1rem;
+}
+
+.order-layout .card.card-horz {
+  padding: 0.5rem 1rem 1rem 1rem;
+  border-radius: 0 0 0.5rem 0.5rem;
+}
+
+.order-layout .card.card-horz .media-cont {
+  width: 4.5rem;
+  flex-shrink: 0;
+}
+.order-layout .card.card-horz .card-title {
+  margin-bottom: 0.6rem;
+}
+.order-layout .card.card-horz .arrow {
+  font-size: 1.5rem;
+  font-weight: 900;
+}
+.order-layout address .body2 {
+  font-size: 0.7rem;
+  line-height: 1.1rem;
+  padding: 0;
+}
+.order-layout .address-holder {
+  padding: .5rem 1rem;
+}
+.order-layout address {
+  border-radius: 0.5rem 0.5rem 0 0;
+  box-shadow: none;
+}
+
+.order-layout .card-body {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  width: 100%;
+  justify-content: space-between;
+}
+
+@media (max-width: 898px) {
+  .order-container {
+    width: 85%;
+    padding: 0.5rem 1rem;
+    margin: 3rem auto;
+  }
+}
+
+@media (max-width: 420px) {
+  .order-container {
+    width: 100%;
+    padding: 0;
+    margin: 3rem auto;
+  }
+  .order-container .card.card-horz .card-body {
+    width: fit-content;
+    padding: 0;
+  }
+  .order-container .card.card-horz .card-body p {
+    width: fit-content;
+    padding: 0;
+  }
+}
+

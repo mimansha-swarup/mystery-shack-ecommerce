@@ -26,7 +26,6 @@ export const OrdersProvider = ({ children }) => {
 
       if (status === 201) {
         orderDispatch({ type: "SET_ORDERS", payload: data.orders });
-        console.log("Order has been placed successfully!");
       }
     } catch (err) {
       console.log("error from addOrder", err);
