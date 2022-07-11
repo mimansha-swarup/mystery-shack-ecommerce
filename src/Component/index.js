@@ -15,8 +15,12 @@ import { Specification } from "./Product/SinglePage/Specification";
 import { AddressHolder } from "./Address/AddressHolder";
 import Modal from "./Modal/Modal";
 import { AddressModal } from "./Address/AddressModal";
+import { AddressProductCard } from "./Address/AddressProductCard";
+import { OrderCard } from "./Orders/OrderCard";
 
 export {
+  OrderCard,
+  AddressProductCard,
   Navbar,
   Hero,
   CategoryCard,

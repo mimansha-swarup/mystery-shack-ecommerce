@@ -14,19 +14,19 @@ const ProviderWrapper = ({ children }) => {
   return (
     <ToastProvider>
       <AuthProvider>
-        <WishlistProvider>
-          <CartProvider>
-            <CategoriesProvider>
-              <FilterProvider>
-                <AddressProvider>
-                  <OrdersProvider>
+        <OrdersProvider>
+          <WishlistProvider>
+            <CartProvider>
+              <CategoriesProvider>
+                <FilterProvider>
+                  <AddressProvider>
                     <ProductsProvider>{children}</ProductsProvider>
-                  </OrdersProvider>
-                </AddressProvider>
-              </FilterProvider>
-            </CategoriesProvider>
-          </CartProvider>
-        </WishlistProvider>
+                  </AddressProvider>
+                </FilterProvider>
+              </CategoriesProvider>
+            </CartProvider>
+          </WishlistProvider>
+        </OrdersProvider>
       </AuthProvider>
     </ToastProvider>
   );

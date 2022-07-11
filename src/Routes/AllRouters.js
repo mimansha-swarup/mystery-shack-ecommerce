@@ -2,9 +2,11 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import {
   AddressPage,
   CartPage,
+  CheckoutPage,
   Error404Page,
   HomePage,
   LoginPage,
+  OrderPage,
   ProductsPage,
   ProfilePage,
   SignupPage,
@@ -37,8 +39,16 @@ const AllRoutes = () => {
         element={<AddressPage />} 
       />
       <Route
+        path="/order"
+        element={<OrderPage />} 
+      />
+      <Route
         path="/wishlist"
         element={<WishlistPage />}
+      />
+      <Route
+        path="/checkout"
+        element={<CheckoutPage />}
       />
       <Route path="/cart" element={<CartPage />} />
       <Route exact path="/" element={<HomePage />} />
