@@ -17,6 +17,7 @@ export const wishListActions = {
 };
 export const cartActions = {
   ADD: "ADD_TO_CART",
+  RESET: "RESET",
   REMOVE: "REMOVE_FROM_CART",
   INCREMENT: "INCREASE_QUANTITY",
   DECREMENT: "DECREASE_QUANTITY",

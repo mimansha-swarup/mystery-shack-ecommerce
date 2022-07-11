@@ -122,7 +122,7 @@ export const CartProvider = ({ children }) => {
       console.log("cart",data )
 
       if (status === 201) {
-        cartDispatch({ type: "SET_CART", payload: [] });
+        cartDispatch({ type: cartActions.RESET, });
       }
     } catch (err) {
       console.log(err);

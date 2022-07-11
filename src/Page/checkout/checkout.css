@@ -3,11 +3,10 @@
   border-radius: .25rem;
 }
 .checkout-box{
-  width: "100%";
   flex-grow: 2;
 }
 .checkout-box .headline4{
-word-spacing: 3px;
+  word-spacing: 3px;
 }
 .checkout-box .card.card-horz {
   padding: 1rem;
@@ -31,4 +30,25 @@ word-spacing: 3px;
   align-items: start;
   width: 100%;
   gap:1;
+}
+
+@media (max-width: 896px) {
+  
+  .checkout-box{
+    width: 100%;
+  }
+  
+  
+}
+@media (max-width: 410px) {
+  .checkout-box .card.card-horz .media-cont {
+    width: 4.5rem;
+    display: flex;
+    justify-content: center;
+  }
+  .checkout-box .card.card-horz .card-subtitle {
+    width: 12rem;
+  }
+ 
+  
 }

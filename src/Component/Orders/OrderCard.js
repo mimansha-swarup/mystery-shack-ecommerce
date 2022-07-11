@@ -2,7 +2,7 @@ import React from "react";
 
 export const OrderCard = ({ orderData }) => {
 
-  const {orderId,orderedAt,deliveryAddress,orderedProducts,amountPaid} = orderData
+  const { orderId, orderedAt, deliveryAddress, orderedProducts, amountPaid } = orderData;
   return (
     <div className="card">
       <div className="order-header">
@@ -25,36 +25,33 @@ export const OrderCard = ({ orderData }) => {
           </span>
         </p>
       </address>
-      {
-        orderedProducts.map(
-          order=>
-      <div key={order._id} className="card  card-horz">
-        <div className="flex">
-          <div className="media-cont">
-            <img
-              className="card-media"
-              src={order.image}
-              alt="productImage"
-            />
-          </div>
-
-          <div className="card-body ">
-            <div className="card-header">
-              <p className="card-title subtitle1 bold">{order.productName}</p>
-              <p className="card-subtitle subtitle1">{order.company}</p>
+      {orderedProducts.map((order) => (
+        <div key={order._id} className="card  card-horz">
+          <div className="flex">
+            <div className="media-cont">
+              <img
+                className="card-media"
+                src={order.image}
+                alt="productImage"
+              />
             </div>
+
+            <div className="card-body ">
+              <div className="card-header">
+                <p className="card-title subtitle1 bold">{order.productName}</p>
+                <p className="card-subtitle subtitle1">{order.company}</p>
+              </div>
+            <p className="caption bold">QTY: {order.quantity}</p>
+            </div>
+            <p className="body1 semibold">₹{order.price}</p>
           </div>
-        <p className="body1 semibold">₹{order.price}</p>
-         
         </div>
-      </div>
-        )
-      }
+      ))}
       <div className="flex">
-
-      <p className="body1 text-green-02 semibold ml-auto mr-1">₹{amountPaid}</p>
+        <p className="body1 text-green-02 semibold ml-auto mr-1">
+          ₹{amountPaid}
+        </p>
       </div>
-
     </div>
   );
 };
