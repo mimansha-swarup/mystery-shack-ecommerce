@@ -44,14 +44,14 @@
   display: none;
 }
 .drawer-pc {
-  display: block;
+  display: flex;
 }
 
 .drawer ul {
   margin: 0;
   padding: 1.5rem 0;
   width: 13.5rem;
-  display: flex;
+  display: none;
   flex-direction: column;
   background-color: var(--Elevation-06);
   box-shadow: var(--Shadow-06);
@@ -64,6 +64,9 @@
   border-radius: 1rem;
 }
 
+.drawer:hover ul {
+  display: flex;
+}
 .drawer ul li.headline4 {
   margin: 0;
   padding: 6px 16px;

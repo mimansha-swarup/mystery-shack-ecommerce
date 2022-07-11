@@ -114,7 +114,7 @@ input[type="radio"] {
     grid-template-columns: repeat(2, 1fr);
   }
   .card-subtitle {
-    width: 15rem;
+    width: 15rem
   }
   .product-Container {
     width: 100%;
@@ -139,6 +139,13 @@ input[type="radio"] {
   .display-none {
     display: none;
   }
+}
+@media (max-width: 468px) {
+  
+  .card-subtitle {
+    width: 10rem
+  }
+  
 }
 
 @media (max-width: 389px) {

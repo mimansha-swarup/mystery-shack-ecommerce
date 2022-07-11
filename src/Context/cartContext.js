@@ -1,6 +1,12 @@
-import { createContext, useContext, useEffect, useReducer, useState } from "react";
+import {
+  createContext,
+  useContext,
+  useEffect,
+  useReducer,
+  useState,
+} from "react";
 import axios from "axios";
-import { cartApi } from "../Helper/Api/api";
+import { cartApi, concatedApi } from "../Helper/Api/api";
 import { cartReducer } from "../Reducer/cartReducer";
 import { cartActions } from "../Reducer/contant";
 import { useAuth } from "./authContext";
@@ -10,28 +16,28 @@ const cartContext = createContext();
 export const useCart = () => useContext(cartContext);
 
 export const CartProvider = ({ children }) => {
-  const  [cartList,setCartList] = useState([])
-  const {authState} = useAuth()
-  const {setToastData} =useToast()
+  const [cartList, setCartList] = useState([]);
+  const { authState } = useAuth();
+  const { setToastData } = useToast();
   useEffect(() => {
-    if(authState?.token){
-
+    if (authState?.token) {
       (async () => {
         try {
-        const response = await axios.get(cartApi, {
-          headers: { authorization: authState.token },
-        });
-        
-        if (response.status === 200) 
-          setCartList(response.data.cart);
-      
+          const response = await axios.get(cartApi, {
+            headers: { authorization: authState.token },
+          });
+
+          if (response.status === 200) setCartList(response.data.cart);
         } catch (error) {
-          setToastData(prevToastData=>[...prevToastData,{type:"error",message:error.message}])
-          console.error("error in fetcing useState",error)
+          setToastData((prevToastData) => [
+            ...prevToastData,
+            { type: "error", message: error.message },
+          ]);
+          console.error("error in fetcing useState", error);
         }
       })();
     }
-    }, [authState?.token, setToastData]);
+  }, [authState?.token, setToastData]);
 
   const [cartState, cartDispatch] = useReducer(cartReducer, { data: cartList });
 
@@ -50,14 +56,16 @@ export const CartProvider = ({ children }) => {
       }
     } catch (error) {
       console.error("error from cart\n", error);
-      setToastData(prevToastData=>[...prevToastData,{type:"error",message:error.message}])
+      setToastData((prevToastData) => [
+        ...prevToastData,
+        { type: "error", message: error.message },
+      ]);
     }
   };
   const deleteProductFromServer = async (token, product, cartDispatch) => {
     try {
       const response = await axios.delete(
-        cartApi + "/" + String(product._id),
-
+        concatedApi(cartApi, String(product._id)),
         { headers: { authorization: token } }
       );
       if (response.status === 200) {
@@ -65,18 +73,20 @@ export const CartProvider = ({ children }) => {
           type: cartActions.REMOVE,
           payload: product,
         });
-        
       }
     } catch (error) {
       console.error("error from cart\n", error.message);
-      setToastData(prevToastData=>[...prevToastData,{type:"error",message:error.message}])
+      setToastData((prevToastData) => [
+        ...prevToastData,
+        { type: "error", message: error.message },
+      ]);
     }
   };
 
   const alterProductQuantity = async (token, type, product, cartDispatch) => {
     try {
       const response = await axios.post(
-        cartApi + "/" + String(product._id),
+        concatedApi(cartApi, String(product._id)),
         {
           action: {
             type: type,
@@ -88,14 +98,34 @@ export const CartProvider = ({ children }) => {
           },
         }
       );
- 
+
       if (response.status === 200) {
-        cartDispatch({ type: cartActions[type.toUpperCase()],payload:product });
-       
+        cartDispatch({
+          type: cartActions[type.toUpperCase()],
+          payload: product,
+        });
       }
     } catch (error) {
-      setToastData(prevToastData=>[...prevToastData,{type:"error",message:error.message}])
-      
+      setToastData((prevToastData) => [
+        ...prevToastData,
+        { type: "error", message: error.message },
+      ]);
+    }
+  };
+  const clearCart = async () => {
+    try {
+      const { status, data } = await axios.post(
+        concatedApi(cartApi, "clearCart"),
+        {},
+        { headers: { authorization: authState?.token } }
+      );
+      console.log("cart",data )
+
+      if (status === 201) {
+        cartDispatch({ type: "SET_CART", payload: [] });
+      }
+    } catch (err) {
+      console.log(err);
     }
   };
   return (
@@ -106,6 +136,7 @@ export const CartProvider = ({ children }) => {
         postCartToServer,
         deleteProductFromServer,
         alterProductQuantity,
+        clearCart
       }}
     >
       {children}

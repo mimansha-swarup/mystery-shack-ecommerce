@@ -25,20 +25,20 @@ const SingleProductPage = () => {
   const { cartState, cartDispatch, postCartToServer, deleteProductFromServer } =
     useCart();
 
-  const isPresent = (list, product) =>
+  const isPresent = (list=[], product) =>
     list.filter((prod) => prod._id === product._id).length > 0;
 
   const [isLiked, setIsLiked] = useState(
-    isPresent(wishListState.data, currProduct)
+    isPresent(wishListState?.data, currProduct)
   );
   const [isAddToCart, setIsAddToCart] = useState(
-    isPresent(cartState.data, currProduct)
+    isPresent(cartState?.data, currProduct)
   );
 
   useEffect(() => {
     setCurrProduct(findProduct());
-    setIsAddToCart(isPresent(cartState.data, findProduct()));
-    setIsLiked(isPresent(wishListState.data, findProduct()));
+    setIsAddToCart(isPresent(cartState?.data, findProduct()));
+    setIsLiked(isPresent(wishListState?.data, findProduct()));
   }, [productId, products]);
   
   const handleAddToWishlist = (token, product, wishListDispatch) => {
