@@ -25,20 +25,20 @@ const SingleProductPage = () => {
   const { cartState, cartDispatch, postCartToServer, deleteProductFromServer } =
     useCart();
 
-  const isPresent = (list, product) =>
+  const isPresent = (list=[], product) =>
     list.filter((prod) => prod._id === product._id).length > 0;
 
   const [isLiked, setIsLiked] = useState(
-    isPresent(wishListState.data, currProduct)
+    isPresent(wishListState?.data, currProduct)
   );
   const [isAddToCart, setIsAddToCart] = useState(
-    isPresent(cartState.data, currProduct)
+    isPresent(cartState?.data, currProduct)
   );
 
   useEffect(() => {
     setCurrProduct(findProduct());
-    setIsAddToCart(isPresent(cartState.data, findProduct()));
-    setIsLiked(isPresent(wishListState.data, findProduct()));
+    setIsAddToCart(isPresent(cartState?.data, findProduct()));
+    setIsLiked(isPresent(wishListState?.data, findProduct()));
   }, [productId, products]);
   
   const handleAddToWishlist = (token, product, wishListDispatch) => {
@@ -96,7 +96,8 @@ const SingleProductPage = () => {
           </span>
         </div>
         <p className="caption text-green-01 regular">inclusive of all taxes</p>
-        <p className="headline4  mb-1">Sizes</p>
+        {/* TODO: to implement */}
+        {/* <p className="headline4  mb-1">Sizes</p>
         <div className="flex gap-1">
           <input type="radio" name="size" className="size-input" id="sm" />
           <label htmlFor="sm" className="sizes flex center">
@@ -122,7 +123,7 @@ const SingleProductPage = () => {
           <label htmlFor="xxl" className="sizes flex center">
             XXL
           </label>
-        </div>
+        </div> */}
         <hr className="line-horz" />
 
         <div className="flex mb-2  gap-1">

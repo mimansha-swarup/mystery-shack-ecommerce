@@ -19,14 +19,14 @@ const ProductCard = ({ product }) => {
     useCart();
   const { setToastData } = useToast();
 
-  const isPresent = (list, product) =>
+  const isPresent = (list=[], product) =>
     list.filter((prod) => prod._id === product._id).length > 0;
 
   const [isLiked, setIsLiked] = useState(
-    isPresent(wishListState.data, product)
+    isPresent(wishListState?.data, product)
   );
   const [isAddToCart, setIsAddToCart] = useState(
-    isPresent(cartState.data, product)
+    isPresent(cartState?.data, product)
   );
 
   const handleAddToWishlist = (token, product, wishListDispatch) => {

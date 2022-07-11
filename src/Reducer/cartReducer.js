@@ -1,11 +1,12 @@
 import { cartActions } from "./contant";
 
 export const cartReducer = (state, action) => {
+
   switch (action.type) {
     case cartActions.ADD:
       return {
         ...state,
-        data: [...state.data, action.payload],
+        data: [...state?.data, action.payload],
       };
     case cartActions.REMOVE:
       return {
@@ -35,6 +36,11 @@ export const cartReducer = (state, action) => {
               }
             : product
         ),
+      };
+    case cartActions.RESET:
+      return {
+        ...state,
+        data: [],
       };
 
     default:

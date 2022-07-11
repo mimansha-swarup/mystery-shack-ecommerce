@@ -22,9 +22,17 @@ a:-webkit-any-link {
   color: initial;
 }
 
+.pointer{
+  cursor: pointer;
+}
+
+
 .react-icons{
   vertical-align: middle;
 }
 .width-half{
   width: 50%;
+}
+.align-baseline{
+  align-items: baseline;
 }

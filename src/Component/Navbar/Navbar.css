@@ -39,34 +39,43 @@
 }
 .drawer {
   margin-left: auto;
-  flex-basis: 80%;
+}
+.drawer-mob {
   display: none;
 }
+.drawer-pc {
+  display: flex;
+}
+
 .drawer ul {
   margin: 0;
-  padding: 1.5rem 1rem;
-  display: flex;
+  padding: 1.5rem 0;
+  width: 13.5rem;
+  display: none;
   flex-direction: column;
   background-color: var(--Elevation-06);
+  box-shadow: var(--Shadow-06);
   list-style: none;
   position: absolute;
   z-index: 3;
-  top: 6%;
-  right: 0;
-  left: 50%;
-  bottom: 50%;
-  border-radius: 1rem 0 0 1rem;
+  top: 7%;
+  right: 3%;
+  bottom: 45%;
+  border-radius: 1rem;
+}
+
+.drawer:hover ul {
+  display: flex;
 }
 .drawer ul li.headline4 {
   margin: 0;
-  padding: 1rem;
+  padding: 6px 16px;
+}
+.drawer ul li.headline4:hover {
+  background-color: var(--Elevation-04);
 }
 .drawer ul li {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   cursor: pointer;
-  border-bottom: 1px solid var(--color-ash-gray);
 }
 
 .drawer .nav-icons {
@@ -82,8 +91,11 @@
   .navbar nav {
     display: none;
   }
-  .drawer {
+  .drawer-mob {
     display: block;
+  }
+  .drawer-pc {
+    display: none;
   }
 
   .search-box {

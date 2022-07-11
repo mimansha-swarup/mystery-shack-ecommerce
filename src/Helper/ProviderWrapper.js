@@ -6,21 +6,27 @@ import {
   WishlistProvider,
   CartProvider,
   ToastProvider,
+  AddressProvider,
+  OrdersProvider,
 } from "../Context";
 
 const ProviderWrapper = ({ children }) => {
   return (
     <ToastProvider>
       <AuthProvider>
-        <WishlistProvider>
-          <CartProvider>
-            <CategoriesProvider>
-              <FilterProvider>
-                <ProductsProvider>{children}</ProductsProvider>
-              </FilterProvider>
-            </CategoriesProvider>
-          </CartProvider>
-        </WishlistProvider>
+        <OrdersProvider>
+          <WishlistProvider>
+            <CartProvider>
+              <CategoriesProvider>
+                <FilterProvider>
+                  <AddressProvider>
+                    <ProductsProvider>{children}</ProductsProvider>
+                  </AddressProvider>
+                </FilterProvider>
+              </CategoriesProvider>
+            </CartProvider>
+          </WishlistProvider>
+        </OrdersProvider>
       </AuthProvider>
     </ToastProvider>
   );

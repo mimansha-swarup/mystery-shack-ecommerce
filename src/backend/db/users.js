@@ -12,6 +12,19 @@ export const users = [
     firstName: "Mactavish",
     lastName: "Soap",
     email: "mactavish@gmail.com",
+    address: [
+      {
+          _id: uuid(),
+          name: "Mactavish Soap",
+          street: "256 / Rose View Colony, Paris",
+          state: "Paris",
+          country: "France",
+          zipCode: "307501",
+          mobile: "9897554001",
+          type:"home"
+      },
+  ],
+    orders:[],
     password: "mactavishsoap",
     createdAt: formatDate(),
     updatedAt: formatDate(),

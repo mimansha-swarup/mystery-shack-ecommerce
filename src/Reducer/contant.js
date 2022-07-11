@@ -17,13 +17,15 @@ export const wishListActions = {
 };
 export const cartActions = {
   ADD: "ADD_TO_CART",
+  RESET: "RESET",
   REMOVE: "REMOVE_FROM_CART",
   INCREMENT: "INCREASE_QUANTITY",
   DECREMENT: "DECREASE_QUANTITY",
 };
 
 export const addressActions = {
-  ADD_ADDRESS:"ADD_ADDRESS"
+  ADD_ADDRESS:"ADD_ADDRESS",
+  SET_DEFAULT:"SET_DEFAULT"
 }
 export const ordersActions = {
   SET_ORDERS:"SET_ORDERS"

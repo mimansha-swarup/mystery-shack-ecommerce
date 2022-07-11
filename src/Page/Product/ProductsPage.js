@@ -27,7 +27,6 @@ const ProductsPage = () => {
     filterState;
 
   const sortedList = sortbyPrice(products, sortBy);
-  // const stockList = displayinStock(sortedList,showInventoryAll) Todo:later add out of stock
   const priceList = filterByPrice(sortedList, maxPrice);
   const categoryList = filterByCategory(priceList, category);
   const searchedList = searchByName(categoryList, searchQuery);
