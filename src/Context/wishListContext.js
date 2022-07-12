@@ -28,7 +28,7 @@ export const WishlistProvider = ({ children }) => {
           const response = await axios.get(wishlistApi, {
             headers: { authorization: authState.token },
           });
-          console.log(response)
+       
           if (response.status === 200) setWishlistArray(response.data.wishlist);
         } catch (error) {
           setToastData(prevToastData=>[...prevToastData,{type:"error",message:error.message}])

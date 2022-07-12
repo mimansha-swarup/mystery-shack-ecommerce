@@ -13,6 +13,10 @@
 .footer-actions{
   flex-grow: 1;
 }
+.footer-description{
+  max-width: 40rem;
+  text-align: justify;
+}
 .footer-actions-container {
   display: flex;
   flex-grow: 1;
@@ -23,7 +27,7 @@
 .footer-icons{
   display: flex;
   justify-content: space-between;
-  gap:1rem;
+  gap:2rem;
   font-size: 2rem;
 }
 .footer a{

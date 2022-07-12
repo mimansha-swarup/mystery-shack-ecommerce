@@ -1,18 +1,17 @@
 import { useCart } from "../../../Context";
 import {
+  cartOrignalValue,
   cartTotalDiscount,
   cartTotalPrice,
 } from "../../../Helper/CartFunction";
-import { DiscountedPrice } from "../../../Helper/DIscountedPrice";
 
 const CartDetails = () => {
   const { cartState } = useCart();
   const deliveryFees = 100;
   const cartValue = cartTotalPrice(cartState.data);
-  const cartDiscount = cartTotalDiscount(cartState.data);
-  const cartValueWithoutDiscount = DiscountedPrice(cartValue, cartDiscount);
+  const cartValueWithoutDiscount = cartOrignalValue(cartState.data);
   const cartDiscountedPrice =
-    DiscountedPrice(cartValue, cartDiscount) - cartValue;
+  cartValueWithoutDiscount - cartValue;
   const total = deliveryFees + cartValue;
 
   return (

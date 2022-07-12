@@ -93,7 +93,7 @@
    right: 0;
    width: 100%;
    padding: 1rem 0;
-   z-index: 3;
+   z-index: 1;
    background-color: inherit;
    border-radius: .5rem 0 .5rem 0;
   }

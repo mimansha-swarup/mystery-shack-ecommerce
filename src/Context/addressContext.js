@@ -13,7 +13,7 @@ export const useAddress = () => useContext(addressContext);
 export const AddressProvider = ({ children }) => {
   const [addressState, addressDispatch] = useReducer(addressReducer, {
     address: [],
-    defaultAddress:{}
+    defaultAddress: {},
   });
 
   const { authState } = useAuth();
@@ -31,10 +31,10 @@ export const AddressProvider = ({ children }) => {
               type: addressActions.ADD_ADDRESS,
               payload: data.address,
             });
-            addressDispatch({
-              type: addressActions.SET_DEFAULT,
-              payload: data.address[data.address.length-1],
-            });
+          addressDispatch({
+            type: addressActions.SET_DEFAULT,
+            payload: data.address[data.address.length - 1],
+          });
         } catch (error) {
           console.error("error in fetcing address", error);
         }
@@ -44,7 +44,6 @@ export const AddressProvider = ({ children }) => {
 
   const addNewAddress = async (address) => {
     try {
-     
       const { status, data } = await axios.post(
         addressApi,
         { address },
@@ -69,7 +68,6 @@ export const AddressProvider = ({ children }) => {
         { address },
         { headers: { authorization: authState?.token } }
       );
-  
 
       if (status === 200) {
         addressDispatch({
@@ -88,6 +86,13 @@ export const AddressProvider = ({ children }) => {
 
   const deleteAddress = async (address) => {
     try {
+      if (address._id === addressState?.defaultAddress._id) {
+        addressDispatch({
+          type: addressActions.SET_DEFAULT,
+          payload: {},
+        });
+      }
+
       const { status, data } = await axios.delete(
         concatedApi(addressApi, address._id),
         { headers: { authorization: authState?.token } }

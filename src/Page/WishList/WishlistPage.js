@@ -1,12 +1,10 @@
 import { wishlistSVG } from "../../assets";
 import { WishListCard } from "../../Component";
-import { useAuth, useWishList } from "../../Context";
-import { Link, Navigate } from "react-router-dom";
+import {  useWishList } from "../../Context";
+import { Link } from "react-router-dom";
 import "./WishlistPage.css";
 const WishlistPage = () => {
   const { wishListState } = useWishList();
-  const {authState} = useAuth()
-  if(!authState?.token) return <Navigate to="/login" replace/>
 
   return (
     <main className="wishlist-container ">

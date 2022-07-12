@@ -1,33 +1,52 @@
 import { NavBrandImg } from "../../assets";
-import { AiFillGithub ,AiFillLinkedin,AiOutlineInstagram,AiOutlineTwitter } from "react-icons/ai";
-import "./Footer.css"
+import {
+  AiFillGithub,
+  AiFillLinkedin,
+  AiOutlineInstagram,
+  AiOutlineTwitter,
+} from "react-icons/ai";
+import "./Footer.css";
+import { Link } from "react-router-dom";
 const Footer = () => {
   return (
     <footer className="footer gap-1">
       <div className="footer-brand flex flex-column center">
-        <a href="/">
-          <img
-            className="brand-logo"
-            src={NavBrandImg}
-            alt="MysteryShack"
-          />
-        </a>
+        <Link to="/">
+          <img className="brand-logo" src={NavBrandImg} alt="MysteryShack" />
+        </Link>
+      <h2 className="headline2mb-0">Mystery Shacks</h2>
+        <p className="subtitle2 text-black-01 footer-description">
+          Mystery Shack is the ultimate destination for fashion and lifestyle.
+           You can shop online at Mystery Shack from the comfort
+          of your home and get your favourites delivered right to your doorstep.
+        </p>
+        <div className="footer-icons mt-1">
+          <a href="https://github.com/mimansha-swarup" target="_blank" rel="noopener noreferrer">
+
+          <AiFillGithub />
+          </a>
+          <a href="https://www.linkedin.com/in/mimansha-swarup/" target="_blank" rel="noopener noreferrer">
+          <AiFillLinkedin />
+          </a>
+          <a href="https://www.instagram.com/n00bcoder/" target="_blank" rel="noopener noreferrer">
+          <AiOutlineTwitter />
+          </a>
+          <AiOutlineInstagram />
+        </div>
+
         
-          <h2 className="headline2" >Mystery Shacks</h2>
-          <div className="footer-icons ">
-            <AiFillGithub/>
-            <AiFillLinkedin/>
-            <AiOutlineTwitter/>
-            <AiOutlineInstagram/>
-          </div>
-      
       </div>
+        {/* 
+        <div className="footer-icons">
+          <AiFillGithub />
+          <AiFillLinkedin />
+          <AiOutlineTwitter />
+          <AiOutlineInstagram />
+        </div> */}
 
-      <div className="footer-actions-container">
-
-      
-      <div className="footer-actions">
-       
+      {/* <div className="footer-actions-container">
+        <div className="footer-actions">
+        
           <h6 className="headline6">About</h6>
           <ul>
             <li>
@@ -44,60 +63,7 @@ const Footer = () => {
             </li>
           </ul>
         </div>
-      <div className="footer-actions">
-       
-          <h6 className="headline6">Pages</h6>
-          <ul>
-            <li>
-              <a href="/">Home</a>
-            </li>
-            <li>
-              <a href="/about">About Us</a>
-            </li>
-            <li>
-              <a href="/products">Products</a>
-            </li>
-            <li>
-              <a href="/cart">Cart</a>
-            </li>
-          </ul>
-        </div>
-      <div className="footer-actions">
-       
-          <h6 className="headline6">Help</h6>
-          <ul>
-            <li>
-              <a href="/">Payments</a>
-            </li>
-            <li>
-              <a href="/">Shipping</a>
-            </li>
-            <li>
-              <a href="/">Cancellation</a>
-            </li>
-            <li>
-              <a href="/">Returns</a>
-            </li>
-          </ul>
-        </div>
-        <div className="footer-actions ">
-          <h6 className="headline6">Information</h6>
-          <ul>
-            <li>
-              <a href="/">FAQ</a>
-            </li>
-            <li>
-              <a href="/">Privacy</a>
-            </li>
-            <li>
-              <a href="/">Security</a>
-            </li>
-          </ul>
-        </div>
-   
-      </div>
-        
-  
+      </div> */}
     </footer>
   );
 };

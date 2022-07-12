@@ -114,12 +114,11 @@ export const CartProvider = ({ children }) => {
   };
   const clearCart = async () => {
     try {
-      const { status, data } = await axios.post(
+      const { status } = await axios.post(
         concatedApi(cartApi, "clearCart"),
         {},
         { headers: { authorization: authState?.token } }
       );
-      console.log("cart",data )
 
       if (status === 201) {
         cartDispatch({ type: cartActions.RESET, });
