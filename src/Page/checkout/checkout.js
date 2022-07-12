@@ -62,7 +62,6 @@ export const CheckoutPage = () => {
                     deliveryAddress: defaultAddress,
                     orderedAt: dayjs().format("DD/MM/YYYY hh:mmA"),
                 };
-                console.log("fired")
                 addOrder(newOrders);
                 clearCart();
                 navigate("/order");
