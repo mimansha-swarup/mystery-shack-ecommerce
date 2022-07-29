@@ -36,3 +36,6 @@ a:-webkit-any-link {
 .align-baseline{
   align-items: baseline;
 }
+.text-justify{
+  text-align: justify;
+}
